@@ -8,16 +8,16 @@ package main
 
 import (
 	"context"
-	"github.com/Wei-Shaw/sub2api/ent"
-	"github.com/Wei-Shaw/sub2api/internal/config"
-	"github.com/Wei-Shaw/sub2api/internal/handler"
-	"github.com/Wei-Shaw/sub2api/internal/handler/admin"
-	"github.com/Wei-Shaw/sub2api/internal/payment"
-	"github.com/Wei-Shaw/sub2api/internal/repository"
-	"github.com/Wei-Shaw/sub2api/internal/securityaudit"
-	"github.com/Wei-Shaw/sub2api/internal/server"
-	"github.com/Wei-Shaw/sub2api/internal/server/middleware"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	"github.com/newcodebook/xoaai/ent"
+	"github.com/newcodebook/xoaai/internal/config"
+	"github.com/newcodebook/xoaai/internal/handler"
+	"github.com/newcodebook/xoaai/internal/handler/admin"
+	"github.com/newcodebook/xoaai/internal/payment"
+	"github.com/newcodebook/xoaai/internal/repository"
+	"github.com/newcodebook/xoaai/internal/securityaudit"
+	"github.com/newcodebook/xoaai/internal/server"
+	"github.com/newcodebook/xoaai/internal/server/middleware"
+	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/redis/go-redis/v9"
 	"log"
 	"net/http"
@@ -27,7 +27,7 @@ import (
 
 import (
 	_ "embed"
-	_ "github.com/Wei-Shaw/sub2api/ent/runtime"
+	_ "github.com/newcodebook/xoaai/ent/runtime"
 )
 
 // Injectors from wire.go:

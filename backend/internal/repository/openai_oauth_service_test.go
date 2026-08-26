@@ -8,9 +8,9 @@ import (
 	"net/url"
 	"testing"
 
-	infraerrors "github.com/Wei-Shaw/sub2api/internal/pkg/errors"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/openai"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
+	"github.com/newcodebook/xoaai/internal/pkg/openai"
+	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 )

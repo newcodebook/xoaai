@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/openai"
+	"github.com/newcodebook/xoaai/internal/pkg/openai"
 )
 
 var codexModelMap = map[string]string{
@@ -117,7 +117,7 @@ func normalizeCodexCallIDForItemType(itemType, id string) string {
 
 func compactCodexCallIDForItemType(itemType, id string) string {
 	prefix := openAIResponsesToolCallIDPrefix(itemType) + "_"
-	digest := sha256.Sum256([]byte("sub2api:codex-call-id:v1:" + id))
+	digest := sha256.Sum256([]byte("xoaai:codex-call-id:v1:" + id))
 	encoded := hex.EncodeToString(digest[:])
 	return prefix + encoded[:codexCallIDMaxLength-len(prefix)]
 }

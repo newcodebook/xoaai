@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Wei-Shaw/sub2api/internal/config"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/claude"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/ctxkey"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/logger"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/usagestats"
+	"github.com/newcodebook/xoaai/internal/config"
+	"github.com/newcodebook/xoaai/internal/pkg/claude"
+	"github.com/newcodebook/xoaai/internal/pkg/ctxkey"
+	"github.com/newcodebook/xoaai/internal/pkg/logger"
+	"github.com/newcodebook/xoaai/internal/pkg/usagestats"
 )
 
 // SelectAccount 选择账号（粘性会话+优先级）

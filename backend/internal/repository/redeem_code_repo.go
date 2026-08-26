@@ -5,11 +5,11 @@ import (
 	"strings"
 	"time"
 
-	dbent "github.com/Wei-Shaw/sub2api/ent"
-	"github.com/Wei-Shaw/sub2api/ent/redeemcode"
-	"github.com/Wei-Shaw/sub2api/ent/user"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/pagination"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	dbent "github.com/newcodebook/xoaai/ent"
+	"github.com/newcodebook/xoaai/ent/redeemcode"
+	"github.com/newcodebook/xoaai/ent/user"
+	"github.com/newcodebook/xoaai/internal/pkg/pagination"
+	"github.com/newcodebook/xoaai/internal/service"
 
 	entsql "entgo.io/ent/dialect/sql"
 )

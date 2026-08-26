@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/logger"
+	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"go.uber.org/zap"
 )
 

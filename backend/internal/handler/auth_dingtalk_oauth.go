@@ -10,13 +10,13 @@ import (
 	"strings"
 	"time"
 
-	dbent "github.com/Wei-Shaw/sub2api/ent"
-	dbuser "github.com/Wei-Shaw/sub2api/ent/user"
-	"github.com/Wei-Shaw/sub2api/internal/config"
-	infraerrors "github.com/Wei-Shaw/sub2api/internal/pkg/errors"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/oauth"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/response"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	dbent "github.com/newcodebook/xoaai/ent"
+	dbuser "github.com/newcodebook/xoaai/ent/user"
+	"github.com/newcodebook/xoaai/internal/config"
+	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
+	"github.com/newcodebook/xoaai/internal/pkg/oauth"
+	"github.com/newcodebook/xoaai/internal/pkg/response"
+	"github.com/newcodebook/xoaai/internal/service"
 
 	"github.com/gin-gonic/gin"
 )

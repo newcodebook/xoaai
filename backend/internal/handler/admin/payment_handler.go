@@ -4,9 +4,9 @@ import (
 	"strconv"
 	"time"
 
-	dbent "github.com/Wei-Shaw/sub2api/ent"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/response"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	dbent "github.com/newcodebook/xoaai/ent"
+	"github.com/newcodebook/xoaai/internal/pkg/response"
+	"github.com/newcodebook/xoaai/internal/service"
 
 	"github.com/gin-gonic/gin"
 )

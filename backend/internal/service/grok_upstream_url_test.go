@@ -5,8 +5,8 @@ package service
 import (
 	"testing"
 
-	"github.com/Wei-Shaw/sub2api/internal/config"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/xai"
+	"github.com/newcodebook/xoaai/internal/config"
+	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	"github.com/stretchr/testify/require"
 )
 

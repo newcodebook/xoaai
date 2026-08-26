@@ -8,11 +8,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Wei-Shaw/sub2api/internal/config"
-	"github.com/Wei-Shaw/sub2api/internal/handler"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/websearch"
-	middleware2 "github.com/Wei-Shaw/sub2api/internal/server/middleware"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	"github.com/newcodebook/xoaai/internal/config"
+	"github.com/newcodebook/xoaai/internal/handler"
+	"github.com/newcodebook/xoaai/internal/pkg/websearch"
+	middleware2 "github.com/newcodebook/xoaai/internal/server/middleware"
+	"github.com/newcodebook/xoaai/internal/service"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/antigravity"
+	"github.com/newcodebook/xoaai/internal/pkg/antigravity"
 )
 
 type AntigravityOAuthService struct {

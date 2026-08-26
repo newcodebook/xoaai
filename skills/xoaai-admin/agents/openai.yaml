@@ -1,0 +1,7 @@
+interface:
+  display_name: "XOAAI Admin"
+  short_description: "Manage XOAAI admin accounts and settings"
+  default_prompt: "Use $xoaai-admin to inspect and manage XOAAI backend accounts safely."
+
+policy:
+  allow_implicit_invocation: true

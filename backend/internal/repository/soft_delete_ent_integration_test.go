@@ -9,11 +9,11 @@ import (
 	"testing"
 	"time"
 
-	dbent "github.com/Wei-Shaw/sub2api/ent"
-	"github.com/Wei-Shaw/sub2api/ent/apikey"
-	"github.com/Wei-Shaw/sub2api/ent/schema/mixins"
-	"github.com/Wei-Shaw/sub2api/ent/usersubscription"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	dbent "github.com/newcodebook/xoaai/ent"
+	"github.com/newcodebook/xoaai/ent/apikey"
+	"github.com/newcodebook/xoaai/ent/schema/mixins"
+	"github.com/newcodebook/xoaai/ent/usersubscription"
+	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/stretchr/testify/require"
 )
 

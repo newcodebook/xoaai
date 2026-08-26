@@ -40,7 +40,7 @@ UI 到宿主：
 
 | `type` | UI 参数 | 成功响应 |
 |---|---|---|
-| `sub2api.plugin.ready` | 无 | 无响应 |
+| `xoaai.plugin.ready` | 无 | 无响应 |
 | `config.load` | 无 | `config` |
 | `config.save` | `config` 对象 | 规范化后的 `config` |
 | `config.test` | 无 | `result` |

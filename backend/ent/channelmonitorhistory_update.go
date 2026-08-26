@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/Wei-Shaw/sub2api/ent/channelmonitor"
-	"github.com/Wei-Shaw/sub2api/ent/channelmonitorhistory"
-	"github.com/Wei-Shaw/sub2api/ent/predicate"
-	"github.com/Wei-Shaw/sub2api/internal/domain"
+	"github.com/newcodebook/xoaai/ent/channelmonitor"
+	"github.com/newcodebook/xoaai/ent/channelmonitorhistory"
+	"github.com/newcodebook/xoaai/ent/predicate"
+	"github.com/newcodebook/xoaai/internal/domain"
 )
 
 // ChannelMonitorHistoryUpdate is the builder for updating ChannelMonitorHistory entities.

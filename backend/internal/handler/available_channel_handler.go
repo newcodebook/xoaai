@@ -3,9 +3,9 @@ package handler
 import (
 	"sort"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/response"
-	"github.com/Wei-Shaw/sub2api/internal/server/middleware"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	"github.com/newcodebook/xoaai/internal/pkg/response"
+	"github.com/newcodebook/xoaai/internal/server/middleware"
+	"github.com/newcodebook/xoaai/internal/service"
 
 	"github.com/gin-gonic/gin"
 )

@@ -11,11 +11,11 @@ import (
 	"strings"
 	"time"
 
-	infraerrors "github.com/Wei-Shaw/sub2api/internal/pkg/errors"
-	pkghttputil "github.com/Wei-Shaw/sub2api/internal/pkg/httputil"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/logger"
-	middleware2 "github.com/Wei-Shaw/sub2api/internal/server/middleware"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
+	pkghttputil "github.com/newcodebook/xoaai/internal/pkg/httputil"
+	"github.com/newcodebook/xoaai/internal/pkg/logger"
+	middleware2 "github.com/newcodebook/xoaai/internal/server/middleware"
+	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )

@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/logger"
-	"github.com/Wei-Shaw/sub2api/internal/service"
+	"github.com/newcodebook/xoaai/internal/pkg/logger"
+	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/redis/go-redis/v9"
 )
 

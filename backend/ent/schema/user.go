@@ -3,8 +3,8 @@ package schema
 import (
 	"fmt"
 
-	"github.com/Wei-Shaw/sub2api/ent/schema/mixins"
-	"github.com/Wei-Shaw/sub2api/internal/domain"
+	"github.com/newcodebook/xoaai/ent/schema/mixins"
+	"github.com/newcodebook/xoaai/internal/domain"
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect"

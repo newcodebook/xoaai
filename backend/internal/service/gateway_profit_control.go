@@ -4,7 +4,7 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/ctxkey"
+	"github.com/newcodebook/xoaai/internal/pkg/ctxkey"
 )
 
 // withGatewayProfitControlGate installs the gate only for explicitly marked

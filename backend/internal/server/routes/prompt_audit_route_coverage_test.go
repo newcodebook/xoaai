@@ -10,9 +10,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Wei-Shaw/sub2api/internal/handler"
-	"github.com/Wei-Shaw/sub2api/internal/securityaudit"
-	servermiddleware "github.com/Wei-Shaw/sub2api/internal/server/middleware"
+	"github.com/newcodebook/xoaai/internal/handler"
+	"github.com/newcodebook/xoaai/internal/securityaudit"
+	servermiddleware "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 )

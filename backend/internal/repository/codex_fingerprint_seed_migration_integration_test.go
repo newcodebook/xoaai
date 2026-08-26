@@ -6,8 +6,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/Wei-Shaw/sub2api/internal/service"
-	dbmigrations "github.com/Wei-Shaw/sub2api/migrations"
+	"github.com/newcodebook/xoaai/internal/service"
+	dbmigrations "github.com/newcodebook/xoaai/migrations"
 	"github.com/google/uuid"
 	"github.com/lib/pq"
 	"github.com/stretchr/testify/require"

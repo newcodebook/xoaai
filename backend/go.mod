@@ -1,4 +1,4 @@
-module github.com/Wei-Shaw/sub2api
+module github.com/newcodebook/xoaai
 
 go 1.27.0
 

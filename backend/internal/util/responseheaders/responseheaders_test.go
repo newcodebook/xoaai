@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/Wei-Shaw/sub2api/internal/config"
+	"github.com/newcodebook/xoaai/internal/config"
 )
 
 func TestFilterHeadersDisabledUsesDefaultAllowlist(t *testing.T) {

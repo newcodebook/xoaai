@@ -13,9 +13,9 @@ import (
 	"strings"
 	"time"
 
-	_ "github.com/Wei-Shaw/sub2api/ent/runtime"
-	"github.com/Wei-Shaw/sub2api/internal/config"
-	"github.com/Wei-Shaw/sub2api/internal/repository"
+	_ "github.com/newcodebook/xoaai/ent/runtime"
+	"github.com/newcodebook/xoaai/internal/config"
+	"github.com/newcodebook/xoaai/internal/repository"
 	"github.com/lib/pq"
 )
 

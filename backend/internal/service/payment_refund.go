@@ -12,14 +12,14 @@ import (
 	"time"
 
 	"entgo.io/ent/dialect/sql"
-	dbent "github.com/Wei-Shaw/sub2api/ent"
-	"github.com/Wei-Shaw/sub2api/ent/paymentauditlog"
-	"github.com/Wei-Shaw/sub2api/ent/paymentorder"
-	"github.com/Wei-Shaw/sub2api/ent/paymentproviderinstance"
-	"github.com/Wei-Shaw/sub2api/internal/payment"
-	"github.com/Wei-Shaw/sub2api/internal/payment/provider"
-	infraerrors "github.com/Wei-Shaw/sub2api/internal/pkg/errors"
-	"github.com/Wei-Shaw/sub2api/internal/pkg/servertiming"
+	dbent "github.com/newcodebook/xoaai/ent"
+	"github.com/newcodebook/xoaai/ent/paymentauditlog"
+	"github.com/newcodebook/xoaai/ent/paymentorder"
+	"github.com/newcodebook/xoaai/ent/paymentproviderinstance"
+	"github.com/newcodebook/xoaai/internal/payment"
+	"github.com/newcodebook/xoaai/internal/payment/provider"
+	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
+	"github.com/newcodebook/xoaai/internal/pkg/servertiming"
 )
 
 // --- Refund Flow ---

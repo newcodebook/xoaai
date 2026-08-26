@@ -8,10 +8,10 @@ import (
 	"strconv"
 	"strings"
 
-	dbent "github.com/Wei-Shaw/sub2api/ent"
-	"github.com/Wei-Shaw/sub2api/ent/paymentproviderinstance"
-	"github.com/Wei-Shaw/sub2api/internal/payment"
-	infraerrors "github.com/Wei-Shaw/sub2api/internal/pkg/errors"
+	dbent "github.com/newcodebook/xoaai/ent"
+	"github.com/newcodebook/xoaai/ent/paymentproviderinstance"
+	"github.com/newcodebook/xoaai/internal/payment"
+	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 )
 
 const (

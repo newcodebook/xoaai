@@ -6,8 +6,8 @@ import (
 	"math"
 	"net/http"
 
-	infraerrors "github.com/Wei-Shaw/sub2api/internal/pkg/errors"
-	"github.com/Wei-Shaw/sub2api/internal/util/logredact"
+	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
+	"github.com/newcodebook/xoaai/internal/util/logredact"
 	"github.com/gin-gonic/gin"
 )
 

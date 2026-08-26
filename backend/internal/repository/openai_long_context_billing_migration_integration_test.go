@@ -6,7 +6,7 @@ import (
 	"context"
 	"testing"
 
-	dbmigrations "github.com/Wei-Shaw/sub2api/migrations"
+	dbmigrations "github.com/newcodebook/xoaai/migrations"
 	"github.com/stretchr/testify/require"
 )
 

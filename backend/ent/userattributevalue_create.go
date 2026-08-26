@@ -11,9 +11,9 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/Wei-Shaw/sub2api/ent/user"
-	"github.com/Wei-Shaw/sub2api/ent/userattributedefinition"
-	"github.com/Wei-Shaw/sub2api/ent/userattributevalue"
+	"github.com/newcodebook/xoaai/ent/user"
+	"github.com/newcodebook/xoaai/ent/userattributedefinition"
+	"github.com/newcodebook/xoaai/ent/userattributevalue"
 )
 
 // UserAttributeValueCreate is the builder for creating a UserAttributeValue entity.

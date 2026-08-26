@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/Wei-Shaw/sub2api/internal/pkg/openai_compat"
+	"github.com/newcodebook/xoaai/internal/pkg/openai_compat"
 	"github.com/stretchr/testify/require"
 )
 

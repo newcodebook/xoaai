@@ -4,7 +4,7 @@ import (
 	"context"
 	"log/slog"
 
-	infraerrors "github.com/Wei-Shaw/sub2api/internal/pkg/errors"
+	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 )
 
 const (

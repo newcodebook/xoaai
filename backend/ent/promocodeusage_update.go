@@ -11,10 +11,10 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"github.com/Wei-Shaw/sub2api/ent/predicate"
-	"github.com/Wei-Shaw/sub2api/ent/promocode"
-	"github.com/Wei-Shaw/sub2api/ent/promocodeusage"
-	"github.com/Wei-Shaw/sub2api/ent/user"
+	"github.com/newcodebook/xoaai/ent/predicate"
+	"github.com/newcodebook/xoaai/ent/promocode"
+	"github.com/newcodebook/xoaai/ent/promocodeusage"
+	"github.com/newcodebook/xoaai/ent/user"
 )
 
 // PromoCodeUsageUpdate is the builder for updating PromoCodeUsage entities.
