@@ -6,9 +6,9 @@ import (
 	"math"
 	"net/http"
 
+	"github.com/gin-gonic/gin"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/util/logredact"
-	"github.com/gin-gonic/gin"
 )
 
 // Response 标准API响应格式
