@@ -1,41 +1,26 @@
 <template>
   <PublicPageLayout>
-    <!-- Hero -->
-    <section class="help-hero">
+    <!-- Compact header: title + prereqs + endpoints in one band -->
+    <section class="help-header">
       <div class="help-container">
-        <div class="hero-badge">Quick Start</div>
-        <h1 class="hero-title">{{ t('help.heroTitle') }}</h1>
-        <p class="hero-desc">{{ t('help.heroDesc') }}</p>
-      </div>
-    </section>
-
-    <!-- Prerequisites -->
-    <section class="help-section">
-      <div class="help-container">
-        <h2 class="section-title">{{ t('help.prereqTitle') }}</h2>
-        <div class="prereq-flow">
-          <div v-for="n in 3" :key="n" class="prereq-item">
-            <div class="prereq-num">{{ n }}</div>
-            <p class="prereq-text">{{ t(`help.prereqStep${n}`) }}</p>
-            <svg v-if="n < 3" class="prereq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <div class="header-top">
+          <h1 class="header-title">{{ t('help.heroTitle') }}</h1>
+          <div class="prereq-flow">
+            <div v-for="n in 3" :key="n" class="prereq-item">
+              <span class="prereq-num">{{ n }}</span>
+              <span class="prereq-text">{{ t(`help.prereqStep${n}`) }}</span>
+              <svg v-if="n < 3" class="prereq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="header-endpoints">
+          <div v-for="ep in endpoints" :key="ep.key" class="ep-chip">
+            <span class="ep-dot" :style="{ background: ep.color }"></span>
+            <span class="ep-label">{{ t(`help.endpoint${ep.key}`) }}</span>
+            <code class="ep-url">{{ t(`help.endpoint${ep.key}Url`) }}</code>
           </div>
         </div>
         <p class="prereq-note">{{ t('help.prereqNote') }}</p>
-      </div>
-    </section>
-
-    <!-- Endpoints -->
-    <section class="help-section section-alt">
-      <div class="help-container">
-        <h2 class="section-title">{{ t('help.endpointTitle') }}</h2>
-        <div class="endpoint-row">
-          <div v-for="ep in endpoints" :key="ep.key" class="ep-card">
-            <div class="ep-dot" :style="{ background: ep.color }"></div>
-            <h3 class="ep-label">{{ t(`help.endpoint${ep.key}`) }}</h3>
-            <code class="ep-url">{{ t(`help.endpoint${ep.key}Url`) }}</code>
-            <p class="ep-desc">{{ t(`help.endpoint${ep.key}Desc`) }}</p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -268,150 +253,117 @@ async function copyText(text: string, key: string) {
 /* ── Layout ── */
 .help-container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-/* ── Hero ── */
-.help-hero {
-  padding: 72px 24px 56px;
-  text-align: center;
-  background: var(--surface, #fff);
+/* ── Compact header (title + prereqs + endpoints) ── */
+.help-header {
+  padding: 56px 24px 40px;
+  background: var(--surface-alt, #f8fafc);
+  border-bottom: 1px solid var(--border, #e2e8f0);
 }
-.hero-badge {
-  display: inline-block;
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--brand, #3875f6);
-  background: rgba(56, 117, 246, 0.08);
-  margin-bottom: 20px;
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
-.hero-title {
-  font-size: clamp(28px, 4vw, 44px);
+.header-title {
+  font-size: 24px;
   font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.15;
-  margin-bottom: 16px;
-}
-.hero-desc {
-  font-size: clamp(15px, 1.8vw, 18px);
-  line-height: 1.65;
-  color: var(--text-secondary, #475569);
-  max-width: 560px;
-  margin: 0 auto;
-}
-
-/* ── Sections ── */
-.help-section { padding: 64px 0; }
-.section-alt { background: var(--surface-alt, #f8fafc); }
-.section-title {
-  font-size: 22px;
-  font-weight: 700;
   letter-spacing: -0.02em;
-  text-align: center;
-  margin-bottom: 36px;
+  line-height: 1.2;
+  flex-shrink: 0;
 }
-
-/* ── Prerequisites ── */
 .prereq-flow {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 0;
-  max-width: 720px;
-  margin: 0 auto 24px;
   flex-wrap: wrap;
 }
 .prereq-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
-  position: relative;
+  gap: 8px;
+  padding: 0 12px;
 }
 .prereq-num {
-  width: 28px;
-  height: 28px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--brand, #3875f6);
   color: #fff;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 11px;
   flex-shrink: 0;
 }
 .prereq-text {
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 13px;
   color: var(--text-secondary, #475569);
-  margin: 0;
 }
 .prereq-arrow {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   color: var(--text-tertiary, #94a3b8);
   flex-shrink: 0;
-  margin-left: 8px;
+  margin-left: 4px;
 }
 .prereq-note {
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--text-tertiary, #94a3b8);
-  max-width: 480px;
-  margin: 0 auto;
+  margin-top: 16px;
 }
 
-@media (max-width: 640px) {
-  .prereq-flow { flex-direction: column; gap: 4px; }
-  .prereq-arrow { transform: rotate(90deg); margin-left: 0; }
+/* Endpoint chips row */
+.header-endpoints {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
-
-/* ── Endpoints ── */
-.endpoint-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-@media (max-width: 768px) { .endpoint-row { grid-template-columns: 1fr; } }
-
-.ep-card {
+.ep-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
   border: 1px solid var(--border, #e2e8f0);
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 8px;
   background: var(--surface, #fff);
-  position: relative;
+  flex: 1;
+  min-width: 200px;
 }
 .ep-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  margin-bottom: 12px;
+  flex-shrink: 0;
 }
 .ep-label {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  margin-bottom: 8px;
+  color: var(--text-secondary, #475569);
+  white-space: nowrap;
 }
 .ep-url {
-  display: block;
   font-size: 12px;
   font-family: ui-monospace, 'SF Mono', 'Fira Code', monospace;
   color: var(--brand, #3875f6);
-  background: rgba(56, 117, 246, 0.06);
-  padding: 6px 10px;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  word-break: break-all;
   font-weight: 500;
+  word-break: break-all;
+  margin-left: auto;
 }
-.ep-desc {
-  font-size: 12px;
-  color: var(--text-tertiary, #94a3b8);
-  line-height: 1.5;
-  margin: 0;
+
+@media (max-width: 720px) {
+  .header-top { flex-direction: column; align-items: flex-start; }
+  .prereq-flow { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .prereq-arrow { transform: rotate(90deg); }
+  .ep-chip { min-width: 0; flex: none; width: 100%; }
 }
+
+/* ── Sections ── */
+.help-section { padding: 48px 0; }
 
 /* ── Guide cards ── */
 .guide-container {

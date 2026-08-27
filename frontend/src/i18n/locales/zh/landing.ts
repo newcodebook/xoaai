@@ -227,7 +227,7 @@ export default {
     endpointOpenAIUrl: 'https://www.xoaai.com/v1',
     endpointOpenAIDesc: '用于 GPT 模型和 OpenAI 格式客户端',
     endpointAnthropic: 'Anthropic 兼容',
-    endpointAnthropicUrl: 'https://www.xoaai.com/v1',
+    endpointAnthropicUrl: 'https://www.xoaai.com',
     endpointAnthropicDesc: '用于 Anthropic 格式的 Claude 模型',
     endpointAntigravity: 'Antigravity',
     endpointAntigravityUrl: 'https://www.xoaai.com/antigravity',
