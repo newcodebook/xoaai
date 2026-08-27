@@ -5,7 +5,6 @@ export default {
   },
   // Home Page
   home: {
-    viewOnGithub: 'View on GitHub',
     viewDocs: 'View Documentation',
     docs: 'Docs',
     switchToLight: 'Switch to Light Mode',
@@ -15,102 +14,128 @@ export default {
     getStarted: 'Get Started',
     goToDashboard: 'Go to Dashboard',
     // User-focused value proposition
-    heroSubtitle: 'One Key, All AI Models',
-    heroDescription: 'No need to manage multiple subscriptions. Access Claude, GPT, Gemini and more with a single API key',
+    heroSubtitle: 'All Your AI Services, One Account',
+    heroDescription: 'Stop juggling multiple AI subscriptions. Access Claude, ChatGPT, Gemini and more from a single platform',
     tags: {
-      subscriptionToApi: 'Subscription to API',
-      stickySession: 'Session Persistence',
+      subscriptionToApi: 'Unified Access',
+      stickySession: 'Always Available',
       realtimeBilling: 'Pay As You Go'
+    },
+    // Chat preview in hero
+    chatPreview: {
+      msg1: 'Help me draft a quarterly report summary',
+      reply1: 'Based on the data you provided, here is a concise summary of Q3 results...',
+      msg2: 'Now translate it to English',
+      reply2: 'Here is the English translation of the quarterly summary...',
     },
     // Pain points section
     painPoints: {
       title: 'Sound Familiar?',
       items: {
         expensive: {
-          title: 'High Subscription Costs',
-          desc: 'Paying for multiple AI subscriptions that add up every month'
+          title: 'Too Many AI Bills',
+          desc: 'Paying separately for each AI service adds up fast'
         },
         complex: {
-          title: 'Account Chaos',
-          desc: 'Managing scattered accounts and API keys across different platforms'
+          title: 'Too Many Accounts',
+          desc: 'Keeping track of logins and passwords across AI platforms'
         },
         unstable: {
-          title: 'Service Interruptions',
-          desc: 'Single accounts hitting rate limits and disrupting your workflow'
+          title: 'Unreliable Service',
+          desc: 'Interruptions and slowdowns when you need AI the most'
         },
         noControl: {
-          title: 'No Usage Control',
-          desc: "Can't track where your money goes or limit team member usage"
+          title: 'No Spending Visibility',
+          desc: "No way to see where the money goes or set limits for your team"
         }
       }
     },
     // Solutions section
     solutions: {
-      title: 'We Solve These Problems',
+      title: 'We Make It Simple',
       subtitle: 'Three simple steps to stress-free AI access'
     },
     features: {
-      unifiedGateway: 'One-Click Access',
-      unifiedGatewayDesc: 'Get a single API key to call all connected AI models. No separate applications needed.',
+      unifiedGateway: 'One Place for Everything',
+      unifiedGatewayDesc: 'Access all major AI services with a single account. No more switching between platforms.',
       multiAccount: 'Always Reliable',
-      multiAccountDesc: 'Smart routing across multiple upstream accounts with automatic failover. Say goodbye to errors.',
-      balanceQuota: 'Pay What You Use',
-      balanceQuotaDesc: 'Usage-based billing with quota limits. Full visibility into team consumption.'
+      multiAccountDesc: 'Smart infrastructure keeps your AI services running smoothly, even during peak hours.',
+      balanceQuota: 'Clear, Fair Pricing',
+      balanceQuotaDesc: 'Pay only for what you use. Set budgets for team members and see exactly where every dollar goes.'
     },
     // Comparison section
     comparison: {
-      title: 'Why Choose Us?',
+      title: 'Why Choose XOAAI?',
       headers: {
-        feature: 'Comparison',
-        official: 'Official Subscriptions',
-        us: 'Our Platform'
+        feature: '',
+        official: 'Official API',
+        us: 'XOAAI'
       },
       items: {
         pricing: {
-          feature: 'Pricing',
-          official: 'Fixed monthly fee, pay even if unused',
-          us: 'Pay only for what you use'
+          feature: 'API Pricing',
+          official: 'Full price per token',
+          us: '60–90% lower than official API rates'
         },
         models: {
-          feature: 'Model Selection',
-          official: 'Single provider only',
-          us: 'Switch between models freely'
+          feature: 'AI Access',
+          official: 'Separate API key per provider',
+          us: 'All providers through one API key'
         },
         management: {
-          feature: 'Account Management',
-          official: 'Manage each service separately',
-          us: 'Unified key, one dashboard'
+          feature: 'Management',
+          official: 'Separate billing and dashboards per provider',
+          us: 'One account, one dashboard, one bill'
         },
         stability: {
-          feature: 'Stability',
-          official: 'Single account rate limits',
-          us: 'Multi-account pool, auto-failover'
+          feature: 'Reliability',
+          official: 'Rate limits on a single API key',
+          us: 'Smart routing across multiple keys'
         },
         control: {
-          feature: 'Usage Control',
-          official: 'Not available',
-          us: 'Quotas & detailed analytics'
+          feature: 'Team Control',
+          official: 'No per-user budgets or analytics',
+          us: 'Per-member budgets and usage reports'
         }
       }
     },
     providers: {
-      title: 'Supported AI Models',
-      description: 'One API, Multiple Choices',
-      supported: 'Supported',
+      title: 'AI Services Available',
+      description: 'One Platform, Multiple Choices',
+      supported: 'Available',
       soon: 'Soon',
       claude: 'Claude',
       gemini: 'Gemini',
       antigravity: 'Antigravity',
       more: 'More'
     },
+    // Nav
+    nav: {
+      products: 'Products',
+      pricing: 'Pricing',
+      docs: 'Docs',
+      menu: 'Menu',
+    },
     // CTA section
     cta: {
       title: 'Ready to Get Started?',
-      description: 'Sign up now and get free trial credits to experience seamless AI access',
-      button: 'Sign Up Free'
+      description: 'Sign up now and get free trial credits to experience all your AI services in one place',
+      button: 'Start Free'
     },
     footer: {
-      allRightsReserved: 'All rights reserved.'
+      product: 'Product',
+      aiServices: 'AI Services',
+      pricing: 'Pricing',
+      apiStatus: 'API Status',
+      support: 'Support',
+      documentation: 'Documentation',
+      apiUsage: 'API Usage Query',
+      contactUs: 'Contact Us',
+      legal: 'Legal',
+      termsOfService: 'Terms of Service',
+      privacyPolicy: 'Privacy Policy',
+      allRightsReserved: 'All rights reserved.',
+      tagline: 'All AI services, one platform.',
     }
   },
 

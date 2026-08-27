@@ -90,411 +90,224 @@
     </footer>
   </div>
 
-  <!-- Default Home Page -->
-  <div
-    v-else
-    class="relative flex min-h-screen flex-col overflow-hidden bg-gradient-to-br from-gray-50 via-primary-50/30 to-gray-100 dark:from-dark-950 dark:via-dark-900 dark:to-dark-950"
-  >
-    <!-- Background Decorations -->
-    <div class="pointer-events-none absolute inset-0 overflow-hidden">
-      <div
-        class="absolute -right-40 -top-40 h-96 w-96 rounded-full bg-primary-400/20 blur-3xl"
-      ></div>
-      <div
-        class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-primary-500/15 blur-3xl"
-      ></div>
-      <div
-        class="absolute left-1/3 top-1/4 h-72 w-72 rounded-full bg-primary-300/10 blur-3xl"
-      ></div>
-      <div
-        class="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-primary-400/10 blur-3xl"
-      ></div>
-      <div
-        class="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"
-      ></div>
-    </div>
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <!-- Default Landing Page                                       -->
+  <!-- ═══════════════════════════════════════════════════════════ -->
+  <div v-else class="landing" :class="{ 'landing-dark': isDark }">
 
-    <!-- Header -->
-    <header class="relative z-20 px-6 py-4">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between">
-        <!-- Logo -->
-        <div class="flex items-center">
-          <div class="h-10 w-10 overflow-hidden rounded-xl shadow-md">
-            <img :src="siteLogo || '/logo.svg'" alt="Logo" class="h-full w-full object-contain" />
-          </div>
+    <!-- ── Nav ── -->
+    <header class="landing-nav" :class="{ scrolled: headerScrolled }">
+      <nav class="nav-inner">
+        <router-link to="/" class="nav-brand">
+          <img :src="siteLogo || '/logo.svg'" alt="" class="nav-logo" />
+          <span class="nav-name">{{ siteName }}</span>
+        </router-link>
+
+        <!-- Desktop nav links -->
+        <div class="nav-links">
+          <a href="#features" class="nav-link" @click.prevent="scrollToSection('features')">{{ t('home.nav.products') }}</a>
+          <a href="#comparison" class="nav-link" @click.prevent="scrollToSection('comparison')">{{ t('home.nav.pricing') }}</a>
+          <a v-if="docUrl" :href="docUrl" target="_blank" rel="noopener noreferrer" class="nav-link">{{ t('home.nav.docs') }}</a>
+          <router-link v-if="showModelPlazaEntry" to="/model-plaza" class="nav-link">{{ t('nav.modelPlaza') }}</router-link>
         </div>
 
-        <!-- Nav Actions -->
-        <div class="flex items-center gap-3">
-          <!-- Language Switcher -->
+        <!-- Right actions -->
+        <div class="nav-actions">
           <LocaleSwitcher />
-
-          <!-- Doc Link -->
-          <a
-            v-if="docUrl"
-            :href="docUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
-            :title="t('home.viewDocs')"
-          >
-            <Icon name="book" size="md" />
-          </a>
-
-          <!-- Model Plaza Link -->
-          <router-link
-            v-if="showModelPlazaEntry"
-            to="/model-plaza"
-            class="inline-flex items-center gap-1.5 rounded-lg p-2 text-sm text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
-            :title="t('nav.modelPlaza')"
-          >
-            <Icon name="grid" size="md" />
-            <span class="hidden sm:inline">{{ t('nav.modelPlaza') }}</span>
-          </router-link>
-
-          <!-- Theme Toggle -->
-          <button
-            @click="toggleTheme"
-            class="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
-            :title="isDark ? t('home.switchToLight') : t('home.switchToDark')"
-          >
+          <button @click="toggleTheme" class="nav-icon-btn" :title="isDark ? t('home.switchToLight') : t('home.switchToDark')">
             <Icon v-if="isDark" name="sun" size="md" />
             <Icon v-else name="moon" size="md" />
           </button>
-
-          <!-- Login / Dashboard Button -->
-          <router-link
-            v-if="isAuthenticated"
-            :to="dashboardPath"
-            class="inline-flex items-center gap-1.5 rounded-full bg-gray-900 py-1 pl-1 pr-2.5 transition-colors hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700"
-          >
-            <span
-              class="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-primary-400 to-primary-600 text-[10px] font-semibold text-white"
-            >
-              {{ userInitial }}
-            </span>
-            <span class="text-xs font-medium text-white">{{ t('home.dashboard') }}</span>
-            <svg
-              class="h-3 w-3 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
-              />
-            </svg>
-          </router-link>
-          <router-link
-            v-else
-            to="/login"
-            class="inline-flex items-center rounded-full bg-gray-900 px-3 py-1 text-xs font-medium text-white transition-colors hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700"
-          >
+          <router-link v-if="!isAuthenticated" to="/login" class="nav-login">
             {{ t('home.login') }}
           </router-link>
+          <router-link
+            :to="isAuthenticated ? dashboardPath : '/register'"
+            class="nav-cta"
+          >
+            {{ isAuthenticated ? t('home.dashboard') : t('home.getStarted') }}
+          </router-link>
+          <!-- Mobile hamburger -->
+          <button class="nav-hamburger" @click="mobileMenuOpen = !mobileMenuOpen" :aria-label="t('home.nav.menu')">
+            <span class="hamburger-bar" :class="{ open: mobileMenuOpen }"></span>
+            <span class="hamburger-bar" :class="{ open: mobileMenuOpen }"></span>
+            <span class="hamburger-bar" :class="{ open: mobileMenuOpen }"></span>
+          </button>
         </div>
       </nav>
+
+      <!-- Mobile menu -->
+      <div class="mobile-menu" :class="{ 'mobile-menu-open': mobileMenuOpen }">
+        <a href="#features" class="mobile-link" @click.prevent="scrollToSection('features'); mobileMenuOpen = false">{{ t('home.nav.products') }}</a>
+        <a href="#comparison" class="mobile-link" @click.prevent="scrollToSection('comparison'); mobileMenuOpen = false">{{ t('home.nav.pricing') }}</a>
+        <a v-if="docUrl" :href="docUrl" target="_blank" rel="noopener noreferrer" class="mobile-link">{{ t('home.nav.docs') }}</a>
+        <router-link v-if="showModelPlazaEntry" to="/model-plaza" class="mobile-link" @click="mobileMenuOpen = false">{{ t('nav.modelPlaza') }}</router-link>
+        <div class="mobile-menu-divider"></div>
+        <router-link v-if="!isAuthenticated" to="/login" class="mobile-link" @click="mobileMenuOpen = false">{{ t('home.login') }}</router-link>
+        <router-link :to="isAuthenticated ? dashboardPath : '/register'" class="mobile-cta" @click="mobileMenuOpen = false">
+          {{ isAuthenticated ? t('home.dashboard') : t('home.getStarted') }}
+        </router-link>
+      </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="relative z-10 flex-1 px-6 py-16">
-      <div class="mx-auto max-w-6xl">
-        <!-- Hero Section - Left/Right Layout -->
-        <div class="mb-12 flex flex-col items-center justify-between gap-12 lg:flex-row lg:gap-16">
-          <!-- Left: Text Content -->
-          <div class="flex-1 text-center lg:text-left">
-            <h1
-              class="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"
-            >
-              {{ siteName }}
-            </h1>
-            <p class="mb-8 text-lg text-gray-600 dark:text-dark-300 md:text-xl">
-              {{ siteSubtitle }}
-            </p>
+    <!-- ── § 1  Hero ── -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-heading">
+          <span class="hero-heading-gradient">{{ t('home.heroSubtitle') }}</span>
+        </h1>
+        <p class="hero-desc">{{ t('home.heroDescription') }}</p>
+        <div class="hero-actions">
+          <router-link :to="isAuthenticated ? dashboardPath : '/register'" class="hero-btn-primary">
+            {{ isAuthenticated ? t('home.goToDashboard') : t('home.getStarted') }}
+            <Icon name="arrowRight" size="md" class="ml-2" :stroke-width="2.5" />
+          </router-link>
+          <a v-if="docUrl" :href="docUrl" target="_blank" rel="noopener noreferrer" class="hero-btn-secondary">
+            {{ t('home.docs') }}
+          </a>
+        </div>
+      </div>
+    </section>
 
-            <!-- CTA Button -->
-            <div>
-              <router-link
-                :to="isAuthenticated ? dashboardPath : '/login'"
-                class="btn btn-primary px-8 py-3 text-base shadow-lg shadow-primary-500/30"
-              >
-                {{ isAuthenticated ? t('home.goToDashboard') : t('home.getStarted') }}
-                <Icon name="arrowRight" size="md" class="ml-2" :stroke-width="2" />
-              </router-link>
-            </div>
-          </div>
+    <!-- ── § 2  Provider Strip ── -->
+    <section class="strip">
+      <div class="strip-inner">
+        <span class="strip-label">{{ t('home.providers.title') }}</span>
+        <div class="strip-logos">
+          <span v-for="p in providerNames" :key="p" class="strip-logo-item">{{ p }}</span>
+        </div>
+      </div>
+    </section>
 
-          <!-- Right: Terminal Animation -->
-          <div class="flex flex-1 justify-center lg:justify-end">
-            <div class="terminal-container">
-              <div class="terminal-window">
-                <!-- Window header -->
-                <div class="terminal-header">
-                  <div class="terminal-buttons">
-                    <span class="btn-close"></span>
-                    <span class="btn-minimize"></span>
-                    <span class="btn-maximize"></span>
-                  </div>
-                  <span class="terminal-title">terminal</span>
-                </div>
-                <!-- Terminal content -->
-                <div class="terminal-body">
-                  <div class="code-line line-1">
-                    <span class="code-prompt">$</span>
-                    <span class="code-cmd">curl</span>
-                    <span class="code-flag">-X POST</span>
-                    <span class="code-url">/v1/messages</span>
-                  </div>
-                  <div class="code-line line-2">
-                    <span class="code-comment"># Routing to upstream...</span>
-                  </div>
-                  <div class="code-line line-3">
-                    <span class="code-success">200 OK</span>
-                    <span class="code-response">{ "content": "Hello!" }</span>
-                  </div>
-                  <div class="code-line line-4">
-                    <span class="code-prompt">$</span>
-                    <span class="cursor"></span>
-                  </div>
-                </div>
+    <!-- ── § 3  Pain → Solution ── -->
+    <section id="features" class="contrast-section sa" data-sa>
+      <div class="contrast-inner">
+        <!-- Pain side -->
+        <div class="contrast-col contrast-pain">
+          <h2 class="contrast-heading">{{ t('home.painPoints.title') }}</h2>
+          <ul class="contrast-list">
+            <li v-for="item in painPointItems" :key="item.key" class="contrast-item pain-item">
+              <span class="contrast-icon pain-icon"><Icon :name="item.icon" size="md" /></span>
+              <div>
+                <strong>{{ t(`home.painPoints.items.${item.key}.title`) }}</strong>
+                <p>{{ t(`home.painPoints.items.${item.key}.desc`) }}</p>
               </div>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
-
-        <!-- Feature Tags - Centered -->
-        <div class="mb-12 flex flex-wrap items-center justify-center gap-4 md:gap-6">
-          <div
-            class="inline-flex items-center gap-2.5 rounded-full border border-gray-200/50 bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-sm dark:border-dark-700/50 dark:bg-dark-800/80"
-          >
-            <Icon name="swap" size="sm" class="text-primary-500" />
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{
-              t('home.tags.subscriptionToApi')
-            }}</span>
-          </div>
-          <div
-            class="inline-flex items-center gap-2.5 rounded-full border border-gray-200/50 bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-sm dark:border-dark-700/50 dark:bg-dark-800/80"
-          >
-            <Icon name="shield" size="sm" class="text-primary-500" />
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{
-              t('home.tags.stickySession')
-            }}</span>
-          </div>
-          <div
-            class="inline-flex items-center gap-2.5 rounded-full border border-gray-200/50 bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-sm dark:border-dark-700/50 dark:bg-dark-800/80"
-          >
-            <Icon name="chart" size="sm" class="text-primary-500" />
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{
-              t('home.tags.realtimeBilling')
-            }}</span>
-          </div>
+        <!-- Divider -->
+        <div class="contrast-divider">
+          <Icon name="arrowRight" size="lg" class="contrast-arrow" />
         </div>
-
-        <!-- Features Grid -->
-        <div class="mb-12 grid gap-6 md:grid-cols-3">
-          <!-- Feature 1: Unified Gateway -->
-          <div
-            class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
-          >
-            <div
-              class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/30 transition-transform group-hover:scale-110"
-            >
-              <Icon name="server" size="lg" class="text-white" />
-            </div>
-            <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('home.features.unifiedGateway') }}
-            </h3>
-            <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
-              {{ t('home.features.unifiedGatewayDesc') }}
-            </p>
-          </div>
-
-          <!-- Feature 2: Account Pool -->
-          <div
-            class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
-          >
-            <div
-              class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg shadow-primary-500/30 transition-transform group-hover:scale-110"
-            >
-              <svg
-                class="h-6 w-6 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
-                />
-              </svg>
-            </div>
-            <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('home.features.multiAccount') }}
-            </h3>
-            <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
-              {{ t('home.features.multiAccountDesc') }}
-            </p>
-          </div>
-
-          <!-- Feature 3: Billing & Quota -->
-          <div
-            class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
-          >
-            <div
-              class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 shadow-lg shadow-purple-500/30 transition-transform group-hover:scale-110"
-            >
-              <svg
-                class="h-6 w-6 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"
-                />
-              </svg>
-            </div>
-            <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-              {{ t('home.features.balanceQuota') }}
-            </h3>
-            <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
-              {{ t('home.features.balanceQuotaDesc') }}
-            </p>
-          </div>
+        <!-- Solution side -->
+        <div class="contrast-col contrast-solution">
+          <h2 class="contrast-heading">{{ t('home.solutions.title') }}</h2>
+          <ul class="contrast-list">
+            <li v-for="f in featureItems" :key="f.key" class="contrast-item solution-item">
+              <span class="contrast-icon solution-icon"><Icon :name="f.icon" size="md" /></span>
+              <div>
+                <strong>{{ t(`home.features.${f.key}`) }}</strong>
+                <p>{{ t(`home.features.${f.key}Desc`) }}</p>
+              </div>
+            </li>
+          </ul>
         </div>
+      </div>
+    </section>
 
-        <!-- Supported Providers -->
-        <div class="mb-8 text-center">
-          <h2 class="mb-3 text-2xl font-bold text-gray-900 dark:text-white">
-            {{ t('home.providers.title') }}
-          </h2>
-          <p class="text-sm text-gray-600 dark:text-dark-400">
-            {{ t('home.providers.description') }}
-          </p>
+    <!-- ── § 4  Core Advantages ── -->
+    <section class="advantages sa" data-sa>
+      <div class="advantages-inner">
+        <div v-for="(adv, i) in advantages" :key="adv.key" class="advantage-block">
+          <div class="advantage-number">{{ String(i + 1).padStart(2, '0') }}</div>
+          <h3 class="advantage-title">{{ t(`home.features.${adv.key}`) }}</h3>
+          <p class="advantage-desc">{{ t(`home.features.${adv.key}Desc`) }}</p>
         </div>
+      </div>
+    </section>
 
-        <div class="mb-16 flex flex-wrap items-center justify-center gap-4">
-          <!-- Claude - Supported -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-primary-200 bg-white/60 px-5 py-3 ring-1 ring-primary-500/20 backdrop-blur-sm dark:border-primary-800 dark:bg-dark-800/60"
-          >
-            <div
-              class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-orange-500"
-            >
-              <span class="text-xs font-bold text-white">C</span>
-            </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{ t('home.providers.claude') }}</span>
-            <span
-              class="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-medium text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
-              >{{ t('home.providers.supported') }}</span
-            >
+    <!-- ── § 5  Comparison ── -->
+    <section id="comparison" class="comparison sa" data-sa>
+      <div class="comparison-inner">
+        <h2 class="comparison-heading">{{ t('home.comparison.title') }}</h2>
+        <div class="comparison-table">
+          <div class="comp-row comp-header">
+            <div class="comp-cell comp-feature"></div>
+            <div class="comp-cell comp-official">{{ t('home.comparison.headers.official') }}</div>
+            <div class="comp-cell comp-us">{{ t('home.comparison.headers.us') }}</div>
           </div>
-          <!-- GPT - Supported -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-primary-200 bg-white/60 px-5 py-3 ring-1 ring-primary-500/20 backdrop-blur-sm dark:border-primary-800 dark:bg-dark-800/60"
-          >
-            <div
-              class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-green-600"
-            >
-              <span class="text-xs font-bold text-white">G</span>
+          <div v-for="key in comparisonKeys" :key="key" class="comp-row">
+            <div class="comp-cell comp-feature">{{ t(`home.comparison.items.${key}.feature`) }}</div>
+            <div class="comp-cell comp-official">{{ t(`home.comparison.items.${key}.official`) }}</div>
+            <div class="comp-cell comp-us">
+              <Icon name="check" size="sm" class="comp-check" />
+              {{ t(`home.comparison.items.${key}.us`) }}
             </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">GPT</span>
-            <span
-              class="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-medium text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
-              >{{ t('home.providers.supported') }}</span
-            >
-          </div>
-          <!-- Gemini - Supported -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-primary-200 bg-white/60 px-5 py-3 ring-1 ring-primary-500/20 backdrop-blur-sm dark:border-primary-800 dark:bg-dark-800/60"
-          >
-            <div
-              class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-600"
-            >
-              <span class="text-xs font-bold text-white">G</span>
-            </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{ t('home.providers.gemini') }}</span>
-            <span
-              class="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-medium text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
-              >{{ t('home.providers.supported') }}</span
-            >
-          </div>
-          <!-- Antigravity - Supported -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-primary-200 bg-white/60 px-5 py-3 ring-1 ring-primary-500/20 backdrop-blur-sm dark:border-primary-800 dark:bg-dark-800/60"
-          >
-            <div
-              class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-rose-500 to-pink-600"
-            >
-              <span class="text-xs font-bold text-white">A</span>
-            </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{ t('home.providers.antigravity') }}</span>
-            <span
-              class="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-medium text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
-              >{{ t('home.providers.supported') }}</span
-            >
-          </div>
-          <!-- More - Coming Soon -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-gray-200/50 bg-white/40 px-5 py-3 opacity-60 backdrop-blur-sm dark:border-dark-700/50 dark:bg-dark-800/40"
-          >
-            <div
-              class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-gray-500 to-gray-600"
-            >
-              <span class="text-xs font-bold text-white">+</span>
-            </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{ t('home.providers.more') }}</span>
-            <span
-              class="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-500 dark:bg-dark-700 dark:text-dark-400"
-              >{{ t('home.providers.soon') }}</span
-            >
           </div>
         </div>
       </div>
-    </main>
+    </section>
 
-    <!-- Footer -->
-    <footer class="relative z-10 border-t border-gray-200/50 px-6 py-8 dark:border-dark-800/50">
-      <div
-        class="mx-auto flex max-w-6xl flex-col items-center justify-center gap-4 text-center sm:flex-row sm:text-left"
-      >
-        <p class="text-sm text-gray-500 dark:text-dark-400">
-          &copy; {{ currentYear }} {{ siteName }}. {{ t('home.footer.allRightsReserved') }}
-        </p>
-        <div class="flex items-center gap-4">
-          <a
-            v-if="docUrl"
-            :href="docUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-dark-400 dark:hover:text-white"
-          >
-            {{ t('home.docs') }}
-          </a>
-          <a
-            :href="githubUrl"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-dark-400 dark:hover:text-white"
-          >
-            GitHub
-          </a>
+    <!-- ── § 6  CTA Banner ── -->
+    <section class="cta-banner">
+      <div class="cta-banner-inner">
+        <h2 class="cta-heading">{{ t('home.cta.title') }}</h2>
+        <p class="cta-desc">{{ t('home.cta.description') }}</p>
+        <router-link :to="isAuthenticated ? dashboardPath : '/register'" class="cta-btn">
+          {{ isAuthenticated ? t('home.goToDashboard') : t('home.cta.button') }}
+          <Icon name="arrowRight" size="md" class="ml-2" :stroke-width="2.5" />
+        </router-link>
+      </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="landing-footer">
+      <div class="footer-main">
+        <!-- Brand column -->
+        <div class="footer-brand-col">
+          <router-link to="/" class="footer-brand">
+            <img :src="siteLogo || '/logo.svg'" alt="" class="footer-logo" />
+            <span class="footer-name">{{ siteName }}</span>
+          </router-link>
+          <p class="footer-tagline">{{ t('home.footer.tagline') }}</p>
         </div>
+
+        <!-- Link columns -->
+        <div class="footer-columns">
+          <div class="footer-col">
+            <h4 class="footer-col-title">{{ t('home.footer.product') }}</h4>
+            <ul class="footer-col-links">
+              <li><a href="#features" @click.prevent="scrollToSection('features')">{{ t('home.footer.aiServices') }}</a></li>
+              <li><a href="#comparison" @click.prevent="scrollToSection('comparison')">{{ t('home.footer.pricing') }}</a></li>
+              <li><router-link to="/key-usage">{{ t('home.footer.apiUsage') }}</router-link></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">{{ t('home.footer.support') }}</h4>
+            <ul class="footer-col-links">
+              <li v-if="docUrl"><a :href="docUrl" target="_blank" rel="noopener noreferrer">{{ t('home.footer.documentation') }}</a></li>
+              <li v-if="showModelPlazaEntry"><router-link to="/model-plaza">{{ t('nav.modelPlaza') }}</router-link></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-col-title">{{ t('home.footer.legal') }}</h4>
+            <ul class="footer-col-links">
+              <li><a href="#">{{ t('home.footer.termsOfService') }}</a></li>
+              <li><a href="#">{{ t('home.footer.privacyPolicy') }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; {{ currentYear }} {{ siteName }}. {{ t('home.footer.allRightsReserved') }}</span>
       </div>
     </footer>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useAuthStore, useAppStore } from '@/stores'
 import LocaleSwitcher from '@/components/common/LocaleSwitcher.vue'
@@ -507,17 +320,60 @@ const { t } = useI18n()
 const authStore = useAuthStore()
 const appStore = useAppStore()
 
-// Site settings - directly from appStore (already initialized from injected config)
+// Pain point items
+const painPointItems = [
+  { key: 'expensive', icon: 'dollar' as const },
+  { key: 'complex', icon: 'key' as const },
+  { key: 'unstable', icon: 'bolt' as const },
+  { key: 'noControl', icon: 'eyeOff' as const },
+]
+
+// Feature items for the solution side
+const featureItems = [
+  { key: 'unifiedGateway', icon: 'globe' as const },
+  { key: 'multiAccount', icon: 'shield' as const },
+  { key: 'balanceQuota', icon: 'chart' as const },
+]
+
+// Advantages — same features, displayed as numbered blocks
+const advantages = [
+  { key: 'unifiedGateway' },
+  { key: 'multiAccount' },
+  { key: 'balanceQuota' },
+]
+
+// Comparison table keys
+const comparisonKeys = ['pricing', 'models', 'management', 'stability', 'control']
+
+// Provider names for the strip
+const providerNames = ['Claude', 'GPT', 'Gemini', 'Antigravity']
+
+// Mobile menu
+const mobileMenuOpen = ref(false)
+
+// Header scroll effect
+const headerScrolled = ref(false)
+
+// Smooth scroll to section
+function scrollToSection(id: string) {
+  const el = document.getElementById(id)
+  if (el) {
+    const headerHeight = 64
+    const top = el.getBoundingClientRect().top + window.scrollY - headerHeight
+    window.scrollTo({ top, behavior: 'smooth' })
+  }
+}
+
+// Site settings
 const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'XOAAI')
 const siteLogo = computed(() => sanitizeUrl(appStore.cachedPublicSettings?.site_logo || appStore.siteLogo || '', { allowRelative: true, allowDataUrl: true }))
-const siteSubtitle = computed(() => appStore.cachedPublicSettings?.site_subtitle || 'AI API Gateway Platform')
+const siteSubtitle = computed(() => appStore.cachedPublicSettings?.site_subtitle || 'All AI Services, One Platform')
 const docUrl = computed(() => sanitizeUrl(appStore.cachedPublicSettings?.doc_url || appStore.docUrl || ''))
 const homeContent = computed(() => appStore.cachedPublicSettings?.home_content || '')
 const hasHomeContent = computed(() => homeContent.value.trim().length > 0)
 const compactHomeEnabled = computed(() => appStore.cachedPublicSettings?.compact_home_enabled === true)
 const modelPlazaEnabled = computed(() => isFeatureFlagEnabled(FeatureFlags.modelPlaza))
 
-// Check if homeContent is a URL (for iframe display)
 const isHomeContentUrl = computed(() => {
   const content = homeContent.value.trim()
   return content.startsWith('http://') || content.startsWith('https://')
@@ -525,9 +381,6 @@ const isHomeContentUrl = computed(() => {
 
 // Theme
 const isDark = ref(document.documentElement.classList.contains('dark'))
-
-// GitHub URL
-const githubUrl = 'https://github.com/newcodebook/xoaai'
 
 // Auth state
 const isAuthenticated = computed(() => authStore.isAuthenticated)
@@ -539,23 +392,15 @@ const showModelPlazaEntry = computed(
 )
 const isAdmin = computed(() => authStore.isAdmin)
 const dashboardPath = computed(() => isAdmin.value ? '/admin/dashboard' : '/dashboard')
-const userInitial = computed(() => {
-  const user = authStore.user
-  if (!user || !user.email) return ''
-  return user.email.charAt(0).toUpperCase()
-})
 
-// Current year for footer
 const currentYear = computed(() => new Date().getFullYear())
 
-// Toggle theme
 function toggleTheme() {
   isDark.value = !isDark.value
   document.documentElement.classList.toggle('dark', isDark.value)
   localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
 }
 
-// Initialize theme
 function initTheme() {
   const savedTheme = localStorage.getItem('theme')
   if (
@@ -567,178 +412,775 @@ function initTheme() {
   }
 }
 
+function onScroll() {
+  headerScrolled.value = window.scrollY > 40
+}
+
+let sectionObserver: IntersectionObserver | null = null
+
 onMounted(() => {
   initTheme()
-
-  // Check auth state
   authStore.checkAuth()
-
-  // Ensure public settings are loaded (will use cache if already loaded from injected config)
   if (!appStore.publicSettingsLoaded) {
     appStore.fetchPublicSettings()
   }
+
+  window.addEventListener('scroll', onScroll, { passive: true })
+
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('sa-visible')
+          sectionObserver?.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+  )
+  document.querySelectorAll('[data-sa]').forEach((el) => {
+    sectionObserver?.observe(el)
+  })
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+  sectionObserver?.disconnect()
 })
 </script>
 
 <style scoped>
-/* Terminal Container */
-.terminal-container {
-  position: relative;
-  display: inline-block;
+/* ═══════════════════════════════════════════════
+   Design tokens
+   ═══════════════════════════════════════════════ */
+.landing {
+  --brand: #3875f6;
+  --brand-light: #6492f9;
+  --brand-dark: #2458d4;
+  --mint: #79f4bd;
+  --cyan: #39d9e7;
+  --text: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
+  --surface: #ffffff;
+  --surface-alt: #f8fafc;
+  --border: #e2e8f0;
+  --radius: 12px;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--surface);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Terminal Window */
-.terminal-window {
-  width: 420px;
-  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-  border-radius: 14px;
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
-  transition: transform 0.3s ease;
+.landing-dark {
+  --text: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --surface: #0f172a;
+  --surface-alt: #1e293b;
+  --border: #1e293b;
 }
 
-.terminal-window:hover {
-  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(-4px);
-}
-
-/* Terminal Header */
-.terminal-header {
-  display: flex;
-  align-items: center;
-  padding: 12px 16px;
-  background: rgba(30, 41, 59, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.terminal-buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.terminal-buttons span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.btn-close {
-  background: #ef4444;
-}
-.btn-minimize {
-  background: #eab308;
-}
-.btn-maximize {
-  background: #22c55e;
-}
-
-.terminal-title {
-  flex: 1;
-  text-align: center;
-  font-size: 12px;
-  font-family: ui-monospace, monospace;
-  color: #64748b;
-  margin-right: 52px;
-}
-
-/* Terminal Body */
-.terminal-body {
-  padding: 20px 24px;
-  font-family: ui-monospace, 'Fira Code', monospace;
-  font-size: 14px;
-  line-height: 2;
-}
-
-.code-line {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+/* Scroll-triggered animation */
+.sa {
   opacity: 0;
-  animation: line-appear 0.5s ease forwards;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sa-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.line-1 {
-  animation-delay: 0.3s;
+/* ═══════════════════════════════════════════════
+   Nav
+   ═══════════════════════════════════════════════ */
+.landing-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 0 24px;
+  transition: background 0.3s, box-shadow 0.3s;
 }
-.line-2 {
-  animation-delay: 1s;
+.landing-nav.scrolled {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 1px 0 var(--border);
 }
-.line-3 {
-  animation-delay: 1.8s;
+.landing-dark .landing-nav.scrolled {
+  background: rgba(15, 23, 42, 0.92);
 }
-.line-4 {
-  animation-delay: 2.5s;
+.nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  gap: 40px;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.nav-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+.nav-name {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-link {
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.nav-link:hover {
+  color: var(--text);
+  background: var(--surface-alt);
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+.nav-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  color: var(--text-tertiary);
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-icon-btn:hover {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+.nav-login {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.nav-login:hover {
+  color: var(--text);
+}
+.nav-cta {
+  margin-left: 2px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.nav-cta:hover {
+  opacity: 0.88;
 }
 
-@keyframes line-appear {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
+/* Hamburger — mobile only */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 8px 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.nav-hamburger:hover {
+  background: var(--surface-alt);
+}
+.hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+.hamburger-bar.open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-bar.open:nth-child(2) {
+  opacity: 0;
+}
+.hamburger-bar.open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile menu panel — hidden on desktop, toggled on mobile */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  padding: 0 24px 20px;
+  gap: 2px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 768px) {
+  .mobile-menu-open {
+    display: flex;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+}
+.mobile-link {
+  padding: 12px 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+}
+.mobile-link:hover {
+  background: var(--surface-alt);
+  color: var(--text);
+}
+.mobile-menu-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 8px 0;
+}
+.mobile-cta {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.mobile-cta:hover {
+  opacity: 0.88;
 }
 
-.code-prompt {
-  color: #22c55e;
-  font-weight: bold;
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-login { display: none; }
+  .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .nav-inner { gap: 12px; }
 }
-.code-cmd {
-  color: #38bdf8;
+
+/* ═══════════════════════════════════════════════
+   § 1  Hero
+   ═══════════════════════════════════════════════ */
+.hero {
+  padding: 100px 24px 80px;
+  text-align: center;
 }
-.code-flag {
-  color: #a78bfa;
+.hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
 }
-.code-url {
-  color: #14b8a6;
+.hero-heading {
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
 }
-.code-comment {
-  color: #64748b;
-  font-style: italic;
+.hero-heading-gradient {
+  background: linear-gradient(135deg, var(--mint) 0%, var(--cyan) 40%, var(--brand) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.code-success {
-  color: #22c55e;
-  background: rgba(34, 197, 94, 0.15);
-  padding: 2px 8px;
-  border-radius: 4px;
+.hero-desc {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 560px;
+  margin: 0 auto 40px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 32px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(56, 117, 246, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.hero-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(56, 117, 246, 0.45);
+}
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.hero-btn-secondary:hover {
+  border-color: var(--brand-light);
+  color: var(--brand);
+}
+
+/* ═══════════════════════════════════════════════
+   § 2  Provider Strip
+   ═══════════════════════════════════════════════ */
+.strip {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+}
+.strip-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 20px 0;
+  overflow-x: auto;
+}
+.strip-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.strip-logos {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.strip-logo-item {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+.strip-logo-item:hover {
+  color: var(--text);
+}
+
+/* ═══════════════════════════════════════════════
+   § 3  Pain → Solution
+   ═══════════════════════════════════════════════ */
+.contrast-section {
+  padding: 96px 24px;
+  background: var(--surface-alt);
+}
+.contrast-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .contrast-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .contrast-divider {
+    justify-self: center;
+  }
+  .contrast-arrow {
+    transform: rotate(90deg);
+  }
+}
+.contrast-heading {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+.contrast-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contrast-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.contrast-item strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.contrast-item p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  margin: 0;
+}
+.contrast-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pain-icon {
+  background: #fef2f2;
+  color: #ef4444;
+}
+.landing-dark .pain-icon {
+  background: rgba(239, 68, 68, 0.12);
+}
+.solution-icon {
+  background: #eff6ff;
+  color: var(--brand);
+}
+.landing-dark .solution-icon {
+  background: rgba(56, 117, 246, 0.12);
+}
+.contrast-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.contrast-arrow {
+  color: var(--brand);
+}
+
+/* ═══════════════════════════════════════════════
+   § 4  Advantages (numbered)
+   ═══════════════════════════════════════════════ */
+.advantages {
+  padding: 96px 24px;
+}
+.advantages-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+@media (max-width: 768px) {
+  .advantages-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+.advantage-block {
+  position: relative;
+}
+.advantage-number {
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--mint), var(--cyan), var(--brand));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.advantage-title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.advantage-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+/* ═══════════════════════════════════════════════
+   § 5  Comparison
+   ═══════════════════════════════════════════════ */
+.comparison {
+  padding: 96px 24px;
+  background: var(--surface-alt);
+}
+.comparison-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.comparison-heading {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 48px;
+}
+.comparison-table {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.comp-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1.5fr 1.5fr;
+  border-bottom: 1px solid var(--border);
+}
+.comp-row:last-child {
+  border-bottom: none;
+}
+.comp-header {
+  background: var(--surface-alt);
+}
+.comp-cell {
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.comp-feature {
   font-weight: 600;
 }
-.code-response {
-  color: #fbbf24;
+.comp-official {
+  color: var(--text-tertiary);
+  text-align: center;
+  border-left: 1px solid var(--border);
+}
+.comp-us {
+  color: var(--brand);
+  font-weight: 500;
+  text-align: center;
+  border-left: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.comp-header .comp-official,
+.comp-header .comp-us {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.comp-header .comp-us {
+  color: var(--brand);
+}
+.comp-check {
+  flex-shrink: 0;
+  color: var(--brand);
 }
 
-/* Blinking Cursor */
-.cursor {
-  display: inline-block;
-  width: 8px;
-  height: 16px;
-  background: #22c55e;
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  0%,
-  50% {
-    opacity: 1;
+@media (max-width: 640px) {
+  .comp-row {
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  51%,
-  100% {
-    opacity: 0;
+  .comp-cell {
+    padding: 12px 10px;
+    font-size: 12px;
   }
 }
 
-/* Dark mode adjustments */
-:deep(.dark) .terminal-window {
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.6),
-    0 0 0 1px rgba(20, 184, 166, 0.2),
-    0 0 40px rgba(20, 184, 166, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+/* ═══════════════════════════════════════════════
+   § 6  CTA Banner
+   ═══════════════════════════════════════════════ */
+.cta-banner {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+  color: #fff;
+}
+.cta-banner-inner {
+  text-align: center;
+  padding: 96px 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.cta-heading {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.cta-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 36px;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 36px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #fff;
+  color: var(--brand);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* ═══════════════════════════════════════════════
+   Footer
+   ═══════════════════════════════════════════════ */
+.landing-footer {
+  background: var(--surface-alt);
+  border-top: 1px solid var(--border);
+  color: var(--text);
+}
+.footer-main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+  display: grid;
+  grid-template-columns: 1.4fr 2fr;
+  gap: 64px;
+}
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+.footer-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+.footer-name {
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+}
+.footer-tagline {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 240px;
+}
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.footer-col-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.footer-col-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-col-links a {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-col-links a:hover {
+  color: var(--brand);
+}
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 20px 24px;
+  max-width: 1120px;
+  margin: 0 auto;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 48px 24px 32px;
+  }
+  .footer-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 </style>

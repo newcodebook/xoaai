@@ -5,7 +5,6 @@ export default {
   },
   // Home Page
   home: {
-    viewOnGithub: '在 GitHub 上查看',
     viewDocs: '查看文档',
     docs: '文档',
     switchToLight: '切换到浅色模式',
@@ -14,88 +13,95 @@ export default {
     login: '登录',
     getStarted: '立即开始',
     goToDashboard: '进入控制台',
-    // 新增：面向用户的价值主张
-    heroSubtitle: '一个密钥，畅用多个 AI 模型',
-    heroDescription: '无需管理多个订阅账号，一站式接入 Claude、GPT、Gemini 等主流 AI 服务',
+    // 面向用户的价值主张
+    heroSubtitle: '所有 AI 服务，一个账号搞定',
+    heroDescription: '不再为每个 AI 工具单独付费和管理账号，一站式使用 Claude、ChatGPT、Gemini 等主流 AI 服务',
     tags: {
-      subscriptionToApi: '订阅转 API',
-      stickySession: '会话保持',
-      realtimeBilling: '按量计费'
+      subscriptionToApi: '统一使用',
+      stickySession: '稳定可靠',
+      realtimeBilling: '按量付费'
+    },
+    // Hero 区域对话预览
+    chatPreview: {
+      msg1: '帮我写一份季度报告摘要',
+      reply1: '根据您提供的数据，以下是第三季度业绩摘要...',
+      msg2: '翻译成英文',
+      reply2: '以下是季度摘要的英文翻译...',
     },
     // 用户痛点区块
     painPoints: {
-      title: '你是否也遇到这些问题？',
+      title: '这些问题你是否也遇到过？',
       items: {
         expensive: {
-          title: '订阅费用高',
-          desc: '每个 AI 服务都要单独订阅，每月支出越来越多'
+          title: 'AI 账单太多',
+          desc: '每个 AI 工具都要单独付费，费用加起来越来越多'
         },
         complex: {
-          title: '多账号难管理',
-          desc: '不同平台的账号、密钥分散各处，管理起来很麻烦'
+          title: '账号太多太乱',
+          desc: '不同 AI 平台的账号密码散落各处，管理起来很头疼'
         },
         unstable: {
-          title: '服务不稳定',
-          desc: '单一账号容易触发限制，影响正常使用'
+          title: '服务时好时坏',
+          desc: '正需要用 AI 的时候偏偏卡顿或者用不了'
         },
         noControl: {
-          title: '用量无法控制',
-          desc: '不知道钱花在哪了，也无法限制团队成员的使用'
+          title: '花了多少看不清',
+          desc: '不知道团队在 AI 上花了多少钱，也没法设限额'
         }
       }
     },
     // 解决方案区块
     solutions: {
-      title: '我们帮你解决',
-      subtitle: '简单三步，开始省心使用 AI'
+      title: '我们让一切变简单',
+      subtitle: '简单三步，轻松使用 AI'
     },
     features: {
-      unifiedGateway: '一键接入',
-      unifiedGatewayDesc: '获取一个 API 密钥，即可调用所有已接入的 AI 模型，无需分别申请。',
+      unifiedGateway: '一站式使用',
+      unifiedGatewayDesc: '一个账号即可使用所有主流 AI 服务，无需在不同平台之间来回切换。',
       multiAccount: '稳定可靠',
-      multiAccountDesc: '智能调度多个上游账号，自动切换和负载均衡，告别频繁报错。',
-      balanceQuota: '用多少付多少',
-      balanceQuotaDesc: '按实际使用量计费，支持设置配额上限，团队用量一目了然。'
+      multiAccountDesc: '智能调度确保服务始终流畅运行，即使在高峰时段也不受影响。',
+      balanceQuota: '费用清晰透明',
+      balanceQuotaDesc: '用多少付多少，支持为团队成员设置预算，每一笔消费一目了然。'
     },
     // 优势对比
     comparison: {
-      title: '为什么选择我们？',
+      title: '为什么选择 XOAAI？',
       headers: {
-        feature: '对比项',
-        official: '官方订阅',
-        us: '本平台'
+        feature: '',
+        official: '官方 API',
+        us: 'XOAAI'
       },
       items: {
         pricing: {
-          feature: '付费方式',
-          official: '固定月费，用不完也付',
-          us: '按量付费，用多少付多少'
+          feature: 'API 价格',
+          official: '按 Token 原价计费',
+          us: '比官方 API 价格低 60–90%'
         },
         models: {
-          feature: '模型选择',
-          official: '单一服务商',
-          us: '多模型随意切换'
+          feature: 'AI 接入',
+          official: '每家供应商单独申请 API Key',
+          us: '一个 API Key 接入所有供应商'
         },
         management: {
-          feature: '账号管理',
-          official: '每个服务单独管理',
-          us: '统一密钥，一站管理'
+          feature: '管理',
+          official: '每家供应商分别管理账单和后台',
+          us: '一个账号、一个后台、一张账单'
         },
         stability: {
-          feature: '服务稳定性',
-          official: '单账号易触发限制',
-          us: '多账号池，自动切换'
+          feature: '稳定性',
+          official: '单 API Key 容易被限速',
+          us: '智能路由分流，多 Key 负载均衡'
         },
         control: {
-          feature: '用量控制',
-          official: '无法限制',
-          us: '可设配额、查明细'
+          feature: '团队管控',
+          official: '无法按人设预算或看报表',
+          us: '按成员设预算，用量报表一目了然'
         }
       }
     },
     providers: {
-      title: '已支持的 AI 模型',
-      description: '一个 API，多种选择',
+      title: '可用的 AI 服务',
+      description: '一个平台，多种选择',
       supported: '已支持',
       soon: '即将推出',
       claude: 'Claude',
@@ -103,14 +109,33 @@ export default {
       antigravity: 'Antigravity',
       more: '更多'
     },
+    // 导航
+    nav: {
+      products: '产品',
+      pricing: '价格',
+      docs: '文档',
+      menu: '菜单',
+    },
     // CTA 区块
     cta: {
       title: '准备好开始了吗？',
-      description: '注册即可获得免费试用额度，体验一站式 AI 服务',
-      button: '免费注册'
+      description: '注册即可获得免费体验额度，一站式使用所有 AI 服务',
+      button: '免费开始'
     },
     footer: {
-      allRightsReserved: '保留所有权利。'
+      product: '产品',
+      aiServices: 'AI 服务',
+      pricing: '价格方案',
+      apiStatus: 'API 状态',
+      support: '支持',
+      documentation: '帮助文档',
+      apiUsage: 'API 用量查询',
+      contactUs: '联系我们',
+      legal: '法律',
+      termsOfService: '服务条款',
+      privacyPolicy: '隐私政策',
+      allRightsReserved: '保留所有权利。',
+      tagline: '所有 AI 服务，一个平台。',
     }
   },
 
