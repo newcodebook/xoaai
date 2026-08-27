@@ -1,28 +1,12 @@
 <template>
   <PublicPageLayout>
-    <!-- Compact header: title + prereqs + endpoints in one band -->
-    <section class="help-header">
-      <div class="help-container">
-        <div class="header-top">
-          <h1 class="header-title">{{ t('help.heroTitle') }}</h1>
-          <div class="prereq-flow">
-            <div v-for="n in 3" :key="n" class="prereq-item">
-              <span class="prereq-num">{{ n }}</span>
-              <span class="prereq-text">{{ t(`help.prereqStep${n}`) }}</span>
-              <svg v-if="n < 3" class="prereq-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </div>
-          </div>
-        </div>
-        <div class="header-endpoints">
-          <div v-for="ep in endpoints" :key="ep.key" class="ep-chip">
-            <span class="ep-dot" :style="{ background: ep.color }"></span>
-            <span class="ep-label">{{ t(`help.endpoint${ep.key}`) }}</span>
-            <code class="ep-url">{{ t(`help.endpoint${ep.key}Url`) }}</code>
-          </div>
-        </div>
-        <p class="prereq-note">{{ t('help.prereqNote') }}</p>
+    <!-- Page header — minimal, just context -->
+    <div class="page-bar">
+      <div class="help-container bar-inner">
+        <h1 class="bar-title">{{ t('help.title') }}</h1>
+        <p class="bar-note">{{ t('help.prereqNote') }}</p>
       </div>
-    </section>
+    </div>
 
     <!-- Client Guides -->
     <section class="help-section">
@@ -117,12 +101,6 @@ import PublicPageLayout from '@/components/layout/PublicPageLayout.vue'
 const { t } = useI18n()
 
 const copiedKey = ref('')
-
-const endpoints = [
-  { key: 'OpenAI', color: '#10b981' },
-  { key: 'Anthropic', color: '#3875f6' },
-  { key: 'Antigravity', color: '#f43f5e' },
-]
 
 const CONFIG_SNIPPETS = {
   claudeCode: {
@@ -253,117 +231,31 @@ async function copyText(text: string, key: string) {
 /* ── Layout ── */
 .help-container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 
-/* ── Compact header (title + prereqs + endpoints) ── */
-.help-header {
-  padding: 56px 24px 40px;
-  background: var(--surface-alt, #f8fafc);
+/* ── Page bar ── */
+.page-bar {
+  padding: 52px 24px 20px;
   border-bottom: 1px solid var(--border, #e2e8f0);
 }
-.header-top {
+.bar-inner {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 24px;
+  gap: 16px;
   flex-wrap: wrap;
 }
-.header-title {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-  flex-shrink: 0;
-}
-.prereq-flow {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  flex-wrap: wrap;
-}
-.prereq-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 0 12px;
-}
-.prereq-num {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--brand, #3875f6);
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.bar-title {
+  font-size: 20px;
   font-weight: 700;
-  font-size: 11px;
-  flex-shrink: 0;
+  letter-spacing: -0.01em;
 }
-.prereq-text {
+.bar-note {
   font-size: 13px;
-  color: var(--text-secondary, #475569);
-}
-.prereq-arrow {
-  width: 16px;
-  height: 16px;
   color: var(--text-tertiary, #94a3b8);
-  flex-shrink: 0;
-  margin-left: 4px;
-}
-.prereq-note {
-  text-align: center;
-  font-size: 12px;
-  color: var(--text-tertiary, #94a3b8);
-  margin-top: 16px;
-}
-
-/* Endpoint chips row */
-.header-endpoints {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.ep-chip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border: 1px solid var(--border, #e2e8f0);
-  border-radius: 8px;
-  background: var(--surface, #fff);
-  flex: 1;
-  min-width: 200px;
-}
-.ep-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.ep-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-secondary, #475569);
-  white-space: nowrap;
-}
-.ep-url {
-  font-size: 12px;
-  font-family: ui-monospace, 'SF Mono', 'Fira Code', monospace;
-  color: var(--brand, #3875f6);
-  font-weight: 500;
-  word-break: break-all;
-  margin-left: auto;
-}
-
-@media (max-width: 720px) {
-  .header-top { flex-direction: column; align-items: flex-start; }
-  .prereq-flow { flex-direction: column; align-items: flex-start; gap: 8px; }
-  .prereq-arrow { transform: rotate(90deg); }
-  .ep-chip { min-width: 0; flex: none; width: 100%; }
+  margin: 0;
 }
 
 /* ── Sections ── */
-.help-section { padding: 48px 0; }
+.help-section { padding: 32px 0; }
 
 /* ── Guide cards ── */
 .guide-container {
