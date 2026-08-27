@@ -24,7 +24,7 @@ services:
   # XOAAI Application
   # ===========================================================================
   xoaai:
-    image: weishaw/xoaai:latest
+    image: ${XOAAI_IMAGE:-ghcr.io/newcodebook/xoaai:latest}
     container_name: xoaai
     restart: unless-stopped
     security_opt:

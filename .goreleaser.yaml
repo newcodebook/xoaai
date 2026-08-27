@@ -52,42 +52,9 @@ changelog:
   # 禁用自动 changelog，完全使用 tag 消息
   disable: true
 
-# Docker images
+# GHCR images
 dockers:
-  # DockerHub images (skipped if DOCKERHUB_USERNAME is 'skip')
-  - id: amd64
-    goos: linux
-    goarch: amd64
-    skip_push: '{{ if eq .Env.DOCKERHUB_USERNAME "skip" }}true{{ else }}false{{ end }}'
-    image_templates:
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-amd64"
-    dockerfile: Dockerfile.goreleaser
-    use: buildx
-    extra_files:
-      - deploy/docker-entrypoint.sh
-      - backend/resources
-    build_flag_templates:
-      - "--platform=linux/amd64"
-      - "--label=org.opencontainers.image.version={{ .Version }}"
-      - "--label=org.opencontainers.image.revision={{ .Commit }}"
-
-  - id: arm64
-    goos: linux
-    goarch: arm64
-    skip_push: '{{ if eq .Env.DOCKERHUB_USERNAME "skip" }}true{{ else }}false{{ end }}'
-    image_templates:
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-arm64"
-    dockerfile: Dockerfile.goreleaser
-    use: buildx
-    extra_files:
-      - deploy/docker-entrypoint.sh
-      - backend/resources
-    build_flag_templates:
-      - "--platform=linux/arm64"
-      - "--label=org.opencontainers.image.version={{ .Version }}"
-      - "--label=org.opencontainers.image.revision={{ .Commit }}"
-
-  # GHCR images (owner must be lowercase)
+  # Owner must be lowercase for GHCR image names.
   - id: ghcr-amd64
     goos: linux
     goarch: amd64
@@ -120,34 +87,8 @@ dockers:
       - "--label=org.opencontainers.image.revision={{ .Commit }}"
       - "--label=org.opencontainers.image.source=https://github.com/{{ .Env.GITHUB_REPO_OWNER }}/{{ .Env.GITHUB_REPO_NAME }}"
 
-# Docker manifests for multi-arch support
+# GHCR manifests for multi-arch support
 docker_manifests:
-  # DockerHub manifests (skipped if DOCKERHUB_USERNAME is 'skip')
-  - name_template: "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}"
-    skip_push: '{{ if eq .Env.DOCKERHUB_USERNAME "skip" }}true{{ else }}false{{ end }}'
-    image_templates:
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-amd64"
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-arm64"
-
-  - name_template: "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:latest"
-    skip_push: '{{ if eq .Env.DOCKERHUB_USERNAME "skip" }}true{{ else }}false{{ end }}'
-    image_templates:
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-amd64"
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-arm64"
-
-  - name_template: "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Major }}.{{ .Minor }}"
-    skip_push: '{{ if eq .Env.DOCKERHUB_USERNAME "skip" }}true{{ else }}false{{ end }}'
-    image_templates:
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-amd64"
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-arm64"
-
-  - name_template: "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Major }}"
-    skip_push: '{{ if eq .Env.DOCKERHUB_USERNAME "skip" }}true{{ else }}false{{ end }}'
-    image_templates:
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-amd64"
-      - "{{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}-arm64"
-
-  # GHCR manifests (owner must be lowercase)
   - name_template: "ghcr.io/{{ .Env.GITHUB_REPO_OWNER_LOWER }}/xoaai:{{ .Version }}"
     image_templates:
       - "ghcr.io/{{ .Env.GITHUB_REPO_OWNER_LOWER }}/xoaai:{{ .Version }}-amd64"
@@ -189,12 +130,6 @@ release:
 
     **Docker:**
     ```bash
-    {{ if ne .Env.DOCKERHUB_USERNAME "skip" -}}
-    # Docker Hub
-    docker pull {{ .Env.DOCKERHUB_USERNAME }}/xoaai:{{ .Version }}
-
-    {{ end -}}
-    # GitHub Container Registry
     docker pull ghcr.io/{{ .Env.GITHUB_REPO_OWNER_LOWER }}/xoaai:{{ .Version }}
     ```
 

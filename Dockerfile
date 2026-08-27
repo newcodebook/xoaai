@@ -108,7 +108,6 @@ FROM ${POSTGRES_IMAGE} AS pg-client
 FROM ${ALPINE_IMAGE}
 
 # Labels
-LABEL maintainer="Wei-Shaw <github.com/Wei-Shaw>"
 LABEL description="XOAAI - AI API Gateway Platform"
 LABEL org.opencontainers.image.source="https://github.com/newcodebook/xoaai"
 

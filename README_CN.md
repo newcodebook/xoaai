@@ -156,6 +156,11 @@ curl -sSL https://raw.githubusercontent.com/newcodebook/xoaai/main/deploy/instal
 - Docker 20.10+
 - Docker Compose v2+
 
+官方容器镜像发布在 GitHub Container Registry：
+`ghcr.io/newcodebook/xoaai`。Compose 可通过 `XOAAI_IMAGE` 覆盖镜像；默认使用
+`ghcr.io/newcodebook/xoaai:latest`。生产环境建议固定具体版本标签或 digest，
+避免 `latest` 隐式升级。公开镜像无需登录 GHCR。
+
 #### 快速开始（一键部署）
 
 使用自动化部署脚本快速搭建：
@@ -216,6 +221,9 @@ ADMIN_PASSWORD=your_admin_password
 
 # 可选：自定义端口
 SERVER_PORT=8080
+
+# 可选：生产环境固定发布版本
+XOAAI_IMAGE=ghcr.io/newcodebook/xoaai:1.0.0
 ```
 
 **生成安全密钥：**

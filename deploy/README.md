@@ -20,7 +20,7 @@ This directory contains files for deploying XOAAI on Linux servers and Apple-sil
 | `apple-container.sh` | Native Apple `container` lifecycle script |
 | `APPLE_CONTAINER.md` | Apple `container` deployment and operations guide |
 | `.env.example` | Container environment variables template |
-| `DOCKER.md` | Docker Hub documentation |
+| `DOCKER.md` | Official GHCR image documentation |
 | `install.sh` | One-click binary installation script |
 | `install-datamanagementd.sh` | datamanagementd 一键安装脚本 |
 | `xoaai.service` | Systemd service unit file |
@@ -50,6 +50,11 @@ See [APPLE_CONTAINER.md](./APPLE_CONTAINER.md) for configuration, upgrades, pers
 
 ## Docker Deployment (Recommended)
 
+The canonical image is `ghcr.io/newcodebook/xoaai`. Compose reads
+`XOAAI_IMAGE`, which defaults to `ghcr.io/newcodebook/xoaai:latest`. Pin a
+release tag or digest in production so upgrades are explicit and reversible.
+The public package does not require registry login.
+
 ### Method 1: One-Click Deployment (Recommended)
 
 Use the automated preparation script for the easiest setup:
@@ -74,13 +79,13 @@ chmod +x docker-deploy.sh
 **After running the script:**
 ```bash
 # Start services
-docker compose -f docker-compose.local.yml up -d
+docker compose up -d
 
 # View logs
-docker compose -f docker-compose.local.yml logs -f xoaai
+docker compose logs -f xoaai
 
 # If admin password was auto-generated, find it in logs:
-docker compose -f docker-compose.local.yml logs xoaai | grep "admin password"
+docker compose logs xoaai | grep "admin password"
 
 # Access Web UI
 # http://localhost:8080
@@ -231,6 +236,7 @@ docker compose down -v
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
+| `XOAAI_IMAGE` | No | `ghcr.io/newcodebook/xoaai:latest` | Official GHCR image; pin a release tag or digest in production. |
 | `POSTGRES_PASSWORD` | **Yes** | - | PostgreSQL password |
 | `JWT_SECRET` | **Recommended** | *(auto-generated)* | JWT secret (fixed for persistent sessions) |
 | `TOTP_ENCRYPTION_KEY` | **Recommended** | *(auto-generated)* | TOTP encryption key (fixed for persistent 2FA) |
