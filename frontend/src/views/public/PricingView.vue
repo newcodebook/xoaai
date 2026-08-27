@@ -41,10 +41,16 @@
         <div class="pricing-table-wrap">
           <table class="pricing-table">
             <thead>
-              <tr>
-                <th>{{ t('pricing.tableModel') }}</th>
+              <tr class="header-group">
+                <th rowspan="2" class="model-th">{{ t('pricing.tableModel') }}</th>
+                <th colspan="2" class="group-th">{{ t('pricing.tableOfficial') }}</th>
+                <th colspan="2" class="group-th rmb-group">{{ t('pricing.tableActual') }}</th>
+              </tr>
+              <tr class="header-sub">
                 <th class="num-col">{{ t('pricing.tableInput') }}</th>
                 <th class="num-col">{{ t('pricing.tableOutput') }}</th>
+                <th class="num-col rmb-col">{{ t('pricing.tableInput') }}</th>
+                <th class="num-col rmb-col">{{ t('pricing.tableOutput') }}</th>
               </tr>
             </thead>
             <tbody>
@@ -53,8 +59,10 @@
                   <span class="model-dot" :style="{ background: row.color }"></span>
                   {{ row.model }}
                 </td>
-                <td class="num-col">{{ row.input }}</td>
-                <td class="num-col">{{ row.output }}</td>
+                <td class="num-col usd-cell">{{ row.input }}</td>
+                <td class="num-col usd-cell">{{ row.output }}</td>
+                <td class="num-col rmb-cell">{{ toRMB(row.input) }}</td>
+                <td class="num-col rmb-cell">{{ toRMB(row.output) }}</td>
               </tr>
             </tbody>
           </table>
@@ -91,6 +99,12 @@ const isAdmin = computed(() => authStore.isAdmin)
 const dashboardPath = computed(() => isAdmin.value ? '/admin/dashboard' : '/dashboard')
 
 const pricingRows = modelCatalog.pricingRows
+
+/** Convert "$X.XX" to "¥X.XX" — since ¥1 = $1 credit, the number is identical. */
+function toRMB(usd: string): string {
+  if (!usd || usd === '—') return '—'
+  return usd.replace('$', '¥')
+}
 </script>
 
 <style scoped>
@@ -155,16 +169,36 @@ const pricingRows = modelCatalog.pricingRows
   font-variant-numeric: tabular-nums;
 }
 .pricing-table th {
-  padding: 14px 20px; text-align: left; font-size: 12px; font-weight: 600;
+  padding: 12px 16px; text-align: left; font-size: 12px; font-weight: 600;
   text-transform: uppercase; letter-spacing: 0.06em;
   color: var(--text-tertiary, #94a3b8); background: var(--surface-alt, #f8fafc);
   border-bottom: 1px solid var(--border, #e2e8f0);
 }
+.pricing-table .header-group th { border-bottom: none; padding-bottom: 4px; }
+.pricing-table .header-sub th { padding-top: 4px; font-size: 11px; }
+.pricing-table .group-th { text-align: center; }
+.pricing-table .model-th { vertical-align: middle; }
+/* RMB group header highlight */
+.pricing-table .rmb-group {
+  background: var(--rmb-header-bg, rgba(56, 117, 246, 0.08));
+  color: var(--brand, #3875f6);
+  border-radius: 8px 8px 0 0;
+}
+.pricing-table .rmb-col {
+  background: var(--rmb-header-bg, rgba(56, 117, 246, 0.04));
+}
 .pricing-table td {
-  padding: 14px 20px; border-bottom: 1px solid var(--border, #e2e8f0);
+  padding: 12px 16px; border-bottom: 1px solid var(--border, #e2e8f0);
 }
 .pricing-table tr:last-child td { border-bottom: none; }
 .num-col { text-align: right; font-weight: 500; }
+/* Subtle USD styling */
+.usd-cell { color: var(--text-secondary, #64748b); }
+/* RMB cells: brand-colored, slightly bolder */
+.rmb-cell {
+  color: var(--brand, #3875f6); font-weight: 600;
+  background: var(--rmb-cell-bg, rgba(56, 117, 246, 0.03));
+}
 .model-dot {
   display: inline-block; width: 8px; height: 8px; border-radius: 50%;
   margin-right: 8px; vertical-align: middle;
