@@ -87,12 +87,11 @@
                 <div class="code-block">
                   <div class="code-header">
                     <span>bash</span>
-                    <button class="copy-btn" @click="copyText(t(`help.${client.key}.env1`) + '\n' + t(`help.${client.key}.env2`), client.key + '-env')">
+                    <button class="copy-btn" @click="copyText(client.envLines.join('\n'), client.key + '-env')">
                       {{ copiedKey === client.key + '-env' ? t('help.copied') : t('help.copyButton') }}
                     </button>
                   </div>
-                  <pre class="code-content"><code>export {{ t(`help.${client.key}.env1`) }}
-export {{ t(`help.${client.key}.env2`) }}</code></pre>
+                  <pre class="code-content"><code>{{ client.envLines.join('\n') }}</code></pre>
                 </div>
                 <div class="guide-note">
                   <Icon name="bolt" size="sm" class="note-icon" />
@@ -149,7 +148,9 @@ const CONFIG_SNIPPETS = {
     content: `{
   "env": {
     "ANTHROPIC_BASE_URL": "https://www.xoaai.com/antigravity",
-    "ANTHROPIC_AUTH_TOKEN": "{api_key}"
+    "ANTHROPIC_AUTH_TOKEN": "{api_key}",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0"
   }
 }`,
   },
@@ -157,8 +158,12 @@ const CONFIG_SNIPPETS = {
     path: '~/.codex/config.toml + ~/.codex/auth.json',
     lang: 'toml + json',
     content: `# ~/.codex/config.toml
+disable_response_storage = true
+
 [model_providers.OpenAI]
+name = "OpenAI"
 base_url = "https://www.xoaai.com/v1"
+wire_api = "responses"
 
 # ~/.codex/auth.json
 {
@@ -171,7 +176,9 @@ base_url = "https://www.xoaai.com/v1"
     content: `{
   "env": {
     "ANTHROPIC_BASE_URL": "https://www.xoaai.com/antigravity",
-    "ANTHROPIC_AUTH_TOKEN": "{api_key}"
+    "ANTHROPIC_AUTH_TOKEN": "{api_key}",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0"
   }
 }`,
   },
@@ -205,11 +212,34 @@ const activeTab = reactive<Record<string, string>>({
   opencode: 'config',
 })
 
+const ENV_LINES = {
+  claudeCode: [
+    'export ANTHROPIC_BASE_URL="https://www.xoaai.com/antigravity"',
+    'export ANTHROPIC_AUTH_TOKEN="{api_key}"',
+    'export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1',
+    'export CLAUDE_CODE_ATTRIBUTION_HEADER=0',
+  ],
+  codex: [
+    'export OPENAI_BASE_URL="https://www.xoaai.com/v1"',
+    'export OPENAI_API_KEY="{api_key}"',
+  ],
+  antigravity: [
+    'export ANTHROPIC_BASE_URL="https://www.xoaai.com/antigravity"',
+    'export ANTHROPIC_AUTH_TOKEN="{api_key}"',
+    'export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1',
+    'export CLAUDE_CODE_ATTRIBUTION_HEADER=0',
+  ],
+  opencode: [
+    'export OPENAI_BASE_URL="https://www.xoaai.com/v1"',
+    'export OPENAI_API_KEY="{api_key}"',
+  ],
+}
+
 const clients = [
-  { key: 'claudeCode' as ClientKey, letter: 'C', color: 'linear-gradient(135deg, #d97706, #ea580c)', note: true, tabs, configPath: CONFIG_SNIPPETS.claudeCode.path, configLang: CONFIG_SNIPPETS.claudeCode.lang, configContent: CONFIG_SNIPPETS.claudeCode.content },
-  { key: 'codex' as ClientKey, letter: 'Cx', color: 'linear-gradient(135deg, #10b981, #059669)', note: true, tabs, configPath: CONFIG_SNIPPETS.codex.path, configLang: CONFIG_SNIPPETS.codex.lang, configContent: CONFIG_SNIPPETS.codex.content },
-  { key: 'antigravity' as ClientKey, letter: 'A', color: 'linear-gradient(135deg, #f43f5e, #db2777)', note: false, tabs, configPath: CONFIG_SNIPPETS.antigravity.path, configLang: CONFIG_SNIPPETS.antigravity.lang, configContent: CONFIG_SNIPPETS.antigravity.content },
-  { key: 'opencode' as ClientKey, letter: 'O', color: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', note: false, tabs, configPath: CONFIG_SNIPPETS.opencode.path, configLang: CONFIG_SNIPPETS.opencode.lang, configContent: CONFIG_SNIPPETS.opencode.content },
+  { key: 'claudeCode' as ClientKey, letter: 'C', color: 'linear-gradient(135deg, #d97706, #ea580c)', note: true, tabs, configPath: CONFIG_SNIPPETS.claudeCode.path, configLang: CONFIG_SNIPPETS.claudeCode.lang, configContent: CONFIG_SNIPPETS.claudeCode.content, envLines: ENV_LINES.claudeCode },
+  { key: 'codex' as ClientKey, letter: 'Cx', color: 'linear-gradient(135deg, #10b981, #059669)', note: true, tabs, configPath: CONFIG_SNIPPETS.codex.path, configLang: CONFIG_SNIPPETS.codex.lang, configContent: CONFIG_SNIPPETS.codex.content, envLines: ENV_LINES.codex },
+  { key: 'antigravity' as ClientKey, letter: 'A', color: 'linear-gradient(135deg, #f43f5e, #db2777)', note: false, tabs, configPath: CONFIG_SNIPPETS.antigravity.path, configLang: CONFIG_SNIPPETS.antigravity.lang, configContent: CONFIG_SNIPPETS.antigravity.content, envLines: ENV_LINES.antigravity },
+  { key: 'opencode' as ClientKey, letter: 'O', color: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', note: false, tabs, configPath: CONFIG_SNIPPETS.opencode.path, configLang: CONFIG_SNIPPETS.opencode.lang, configContent: CONFIG_SNIPPETS.opencode.content, envLines: ENV_LINES.opencode },
 ]
 
 async function copyText(text: string, key: string) {
