@@ -8,7 +8,7 @@
       </div>
     </section>
 
-    <!-- Exchange Rate -->
+    <!-- How it works -->
     <section class="pg-section">
       <div class="pg-container">
         <h2 class="pg-section-title">{{ t('pricing.exchangeTitle') }}</h2>
@@ -25,34 +25,11 @@
             <div class="exchange-side">
               <span class="exchange-currency">$</span>
               <span class="exchange-amount">1</span>
-              <span class="exchange-label">USD Token Credit</span>
+              <span class="exchange-label">API Credit</span>
             </div>
           </div>
           <p class="exchange-desc">{{ t('pricing.exchangeDesc') }}</p>
-          <p class="exchange-note">{{ t('pricing.exchangeNote') }}</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Cheaper -->
-    <section class="pg-section pg-section-alt">
-      <div class="pg-container">
-        <h2 class="pg-section-title">{{ t('pricing.whyCheaperTitle') }}</h2>
-        <div class="cheaper-steps">
-          <div class="cheaper-step">
-            <div class="cheaper-num">1</div>
-            <p>{{ t('pricing.whyCheaper1') }}</p>
-          </div>
-          <div class="cheaper-arrow"><Icon name="arrowRight" size="md" /></div>
-          <div class="cheaper-step">
-            <div class="cheaper-num">2</div>
-            <p>{{ t('pricing.whyCheaper2') }}</p>
-          </div>
-          <div class="cheaper-arrow"><Icon name="arrowRight" size="md" /></div>
-          <div class="cheaper-step">
-            <div class="cheaper-num">3</div>
-            <p>{{ t('pricing.whyCheaper3') }}</p>
-          </div>
+          <p class="exchange-example">{{ t('pricing.exchangeExample') }}</p>
         </div>
       </div>
     </section>
@@ -113,12 +90,14 @@ const isAdmin = computed(() => authStore.isAdmin)
 const dashboardPath = computed(() => isAdmin.value ? '/admin/dashboard' : '/dashboard')
 
 const pricingRows = [
+  { model: 'Claude Opus 5', input: '$15.00', output: '$75.00', color: '#ea580c' },
+  { model: 'Claude Sonnet 5', input: '$3.00', output: '$15.00', color: '#ea580c' },
   { model: 'Claude Opus 4', input: '$15.00', output: '$75.00', color: '#ea580c' },
   { model: 'Claude Sonnet 4', input: '$3.00', output: '$15.00', color: '#ea580c' },
-  { model: 'Claude Haiku 3.5', input: '$0.80', output: '$4.00', color: '#ea580c' },
-  { model: 'GPT-4o', input: '$2.50', output: '$10.00', color: '#10b981' },
+  { model: 'Claude Haiku 4.5', input: '$0.80', output: '$4.00', color: '#ea580c' },
   { model: 'GPT-4.1', input: '$2.00', output: '$8.00', color: '#10b981' },
   { model: 'GPT-4.1 mini', input: '$0.40', output: '$1.60', color: '#10b981' },
+  { model: 'GPT-4o', input: '$2.50', output: '$10.00', color: '#10b981' },
   { model: 'o3', input: '$2.00', output: '$8.00', color: '#10b981' },
   { model: 'o4-mini', input: '$1.10', output: '$4.40', color: '#10b981' },
   { model: 'Gemini 2.5 Pro', input: '$1.25', output: '$10.00', color: '#3b82f6' },
@@ -172,32 +151,10 @@ const pricingRows = [
 .exchange-desc {
   font-size: 16px; line-height: 1.65; color: var(--text-secondary, #475569); margin-bottom: 16px;
 }
-.exchange-note {
-  font-size: 13px; color: var(--text-tertiary, #94a3b8); font-style: italic;
-}
-
-/* Why cheaper */
-.cheaper-steps {
-  display: flex; align-items: center; justify-content: center; gap: 24px;
-  flex-wrap: wrap; max-width: 800px; margin: 0 auto;
-}
-.cheaper-step {
-  flex: 1; min-width: 180px; text-align: center;
-  padding: 28px 20px; border: 1px solid var(--border, #e2e8f0);
-  border-radius: 16px; background: var(--surface, #fff);
-}
-.cheaper-num {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: var(--brand, #3875f6); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 700; font-size: 16px; margin: 0 auto 16px;
-}
-.cheaper-step p { font-size: 15px; line-height: 1.5; color: var(--text-secondary, #475569); margin: 0; }
-.cheaper-arrow { color: var(--text-tertiary, #94a3b8); flex-shrink: 0; }
-@media (max-width: 768px) {
-  .cheaper-arrow { transform: rotate(90deg); }
-  .cheaper-steps { flex-direction: column; gap: 16px; }
-  .cheaper-step { min-width: auto; width: 100%; }
+.exchange-example {
+  font-size: 14px; line-height: 1.6; color: var(--text-tertiary, #94a3b8);
+  background: var(--surface-alt, #f8fafc); padding: 16px 20px;
+  border-radius: 10px; text-align: left;
 }
 
 /* Pricing table */
