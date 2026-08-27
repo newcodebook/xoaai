@@ -50,17 +50,55 @@
             </div>
 
             <div class="guide-body">
-              <p class="guide-step-label">{{ t(`help.${client.key}.step1`) }}</p>
-              <div class="code-block">
-                <div class="code-header">
-                  <span>{{ client.shell }}</span>
-                  <button class="copy-btn" @click="copyText(t(`help.${client.key}.env1`) + '\n' + t(`help.${client.key}.env2`), client.key)">
-                    {{ copiedKey === client.key ? t('help.copied') : t('help.copyButton') }}
-                  </button>
-                </div>
-                <pre class="code-content"><code>export {{ t(`help.${client.key}.env1`) }}
-export {{ t(`help.${client.key}.env2`) }}</code></pre>
+              <!-- Method tabs -->
+              <div class="method-tabs">
+                <button
+                  v-for="tab in client.tabs"
+                  :key="tab.id"
+                  class="method-tab"
+                  :class="{ active: activeTab[client.key] === tab.id }"
+                  @click="activeTab[client.key] = tab.id"
+                >
+                  {{ t(`help.tab${tab.labelKey}`) }}
+                </button>
               </div>
+
+              <!-- Config file method -->
+              <template v-if="activeTab[client.key] === 'config'">
+                <p class="guide-step-label">{{ t(`help.${client.key}.configStep`) }}</p>
+                <div class="config-path">
+                  <Icon name="bolt" size="sm" class="path-icon" />
+                  <code>{{ client.configPath }}</code>
+                </div>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>{{ client.configLang }}</span>
+                    <button class="copy-btn" @click="copyText(client.configContent, client.key + '-config')">
+                      {{ copiedKey === client.key + '-config' ? t('help.copied') : t('help.copyButton') }}
+                    </button>
+                  </div>
+                  <pre class="code-content"><code>{{ client.configContent }}</code></pre>
+                </div>
+              </template>
+
+              <!-- Env var method -->
+              <template v-else>
+                <p class="guide-step-label">{{ t(`help.${client.key}.step1`) }}</p>
+                <div class="code-block">
+                  <div class="code-header">
+                    <span>bash</span>
+                    <button class="copy-btn" @click="copyText(t(`help.${client.key}.env1`) + '\n' + t(`help.${client.key}.env2`), client.key + '-env')">
+                      {{ copiedKey === client.key + '-env' ? t('help.copied') : t('help.copyButton') }}
+                    </button>
+                  </div>
+                  <pre class="code-content"><code>export {{ t(`help.${client.key}.env1`) }}
+export {{ t(`help.${client.key}.env2`) }}</code></pre>
+                </div>
+                <div class="guide-note">
+                  <Icon name="bolt" size="sm" class="note-icon" />
+                  <span>{{ t(`help.envNote`) }}</span>
+                </div>
+              </template>
 
               <p class="guide-step-label step2">{{ t(`help.${client.key}.step2`) }}</p>
 
@@ -89,7 +127,7 @@ export {{ t(`help.${client.key}.env2`) }}</code></pre>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { useI18n } from 'vue-i18n'
 import PublicPageLayout from '@/components/layout/PublicPageLayout.vue'
 import Icon from '@/components/icons/Icon.vue'
@@ -104,11 +142,74 @@ const endpoints = [
   { key: 'Antigravity' },
 ]
 
+const CONFIG_SNIPPETS = {
+  claudeCode: {
+    path: '~/.claude/settings.json',
+    lang: 'json',
+    content: `{
+  "env": {
+    "ANTHROPIC_BASE_URL": "{base_url}/antigravity",
+    "ANTHROPIC_AUTH_TOKEN": "{api_key}"
+  }
+}`,
+  },
+  codex: {
+    path: '~/.codex/config.toml + ~/.codex/auth.json',
+    lang: 'toml + json',
+    content: `# ~/.codex/config.toml
+[model_providers.OpenAI]
+base_url = "{base_url}/v1"
+
+# ~/.codex/auth.json
+{
+  "OPENAI_API_KEY": "{api_key}"
+}`,
+  },
+  antigravity: {
+    path: '~/.claude/settings.json',
+    lang: 'json',
+    content: `{
+  "env": {
+    "ANTHROPIC_BASE_URL": "{base_url}/antigravity",
+    "ANTHROPIC_AUTH_TOKEN": "{api_key}"
+  }
+}`,
+  },
+  opencode: {
+    path: 'opencode.json',
+    lang: 'json',
+    content: `{
+  "provider": {
+    "anthropic": {
+      "options": {
+        "baseURL": "{base_url}/v1",
+        "apiKey": "{api_key}"
+      }
+    }
+  }
+}`,
+  },
+} as const
+
+type ClientKey = keyof typeof CONFIG_SNIPPETS
+
+const tabs = [
+  { id: 'config', labelKey: 'Config' },
+  { id: 'env', labelKey: 'Env' },
+]
+
+const activeTab = reactive<Record<string, string>>({
+  claudeCode: 'config',
+  codex: 'config',
+  antigravity: 'config',
+  opencode: 'config',
+})
+
 const clients = [
-  { key: 'claudeCode', letter: 'C', color: 'linear-gradient(135deg, #d97706, #ea580c)', shell: 'bash', note: true },
-  { key: 'codex', letter: 'Cx', color: 'linear-gradient(135deg, #10b981, #059669)', shell: 'bash', note: true },
-  { key: 'antigravity', letter: 'A', color: 'linear-gradient(135deg, #f43f5e, #db2777)', shell: 'bash', note: false },
-  { key: 'opencode', letter: 'O', color: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', shell: 'bash', note: false },
+  { key: 'claudeCode' as ClientKey, letter: 'C', color: 'linear-gradient(135deg, #d97706, #ea580c)', note: true, tabs, configPath: CONFIG_SNIPPETS.claudeCode.path, configLang: CONFIG_SNIPPETS.claudeCode.lang, configContent: CONFIG_SNIPPETS.claudeCode.content },
+  { key: 'codex' as ClientKey, letter: 'Cx', color: 'linear-gradient(135deg, #10b981, #059669)', note: true, tabs, configPath: CONFIG_SNIPPETS.codex.path, configLang: CONFIG_SNIPPETS.codex.lang, configContent: CONFIG_SNIPPETS.codex.content },
+  { key: 'antigravity' as ClientKey, letter: 'A', color: 'linear-gradient(135deg, #f43f5e, #db2777)', note: false, tabs, configPath: CONFIG_SNIPPETS.antigravity.path, configLang: CONFIG_SNIPPETS.antigravity.lang, configContent: CONFIG_SNIPPETS.antigravity.content },
+  { key: 'opencode' as ClientKey, letter: 'O', color: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', note: false, tabs, configPath: CONFIG_SNIPPETS.opencode.path, configLang: CONFIG_SNIPPETS.opencode.lang, configContent: CONFIG_SNIPPETS.opencode.content },
 ]
 
 async function copyText(text: string, key: string) {
@@ -211,6 +312,36 @@ async function copyText(text: string, key: string) {
 .guide-body { padding: 24px 28px; }
 .guide-step-label { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
 .guide-step-label.step2 { margin-top: 20px; color: var(--text-secondary, #475569); }
+
+/* Method tabs */
+.method-tabs {
+  display: flex; gap: 4px; margin-bottom: 16px;
+  background: var(--surface-alt, #f1f5f9); border-radius: 8px; padding: 3px;
+}
+.method-tab {
+  flex: 1; padding: 8px 16px; border-radius: 6px; border: none;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  background: transparent; color: var(--text-secondary, #64748b);
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+.method-tab.active {
+  background: var(--surface, #fff); color: var(--brand, #3875f6);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.method-tab:hover:not(.active) { color: var(--text-primary, #1e293b); }
+
+/* Config path */
+.config-path {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 12px; padding: 8px 12px;
+  border-radius: 8px; background: rgba(56,117,246,0.06);
+  font-size: 13px;
+}
+.config-path code {
+  font-family: ui-monospace, 'Fira Code', monospace;
+  color: var(--brand, #3875f6); font-weight: 500;
+}
+.path-icon { flex-shrink: 0; color: var(--brand, #3875f6); }
 
 /* Code block */
 .code-block {
