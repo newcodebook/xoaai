@@ -6,11 +6,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/dgraph-io/ristretto"
 	dbent "github.com/newcodebook/xoaai/ent"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 	"github.com/newcodebook/xoaai/internal/pkg/timezone"
-	"github.com/dgraph-io/ristretto"
 	"github.com/stretchr/testify/require"
 )
 

@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/google/uuid"
+	"github.com/newcodebook/xoaai/internal/pkg/logger"
 )
 
 const (

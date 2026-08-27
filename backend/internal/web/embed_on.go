@@ -17,8 +17,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/server/middleware"
 )
 
 const (

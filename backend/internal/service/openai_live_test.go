@@ -10,9 +10,9 @@ import (
 	"testing"
 	"time"
 
+	coderws "github.com/coder/websocket"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/pkg/tlsfingerprint"
-	coderws "github.com/coder/websocket"
 	"github.com/stretchr/testify/require"
 )
 

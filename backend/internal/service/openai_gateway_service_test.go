@@ -13,11 +13,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/cespare/xxhash/v2"
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/model"
 	"github.com/newcodebook/xoaai/internal/pkg/openai"
-	"github.com/cespare/xxhash/v2"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 	"github.com/tidwall/gjson"
 )

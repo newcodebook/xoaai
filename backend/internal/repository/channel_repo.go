@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/lib/pq"
 	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/lib/pq"
 )
 
 type channelRepository struct {

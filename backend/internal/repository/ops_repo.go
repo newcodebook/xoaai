@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/lib/pq"
+	"github.com/newcodebook/xoaai/internal/service"
 )
 
 type opsRepository struct {

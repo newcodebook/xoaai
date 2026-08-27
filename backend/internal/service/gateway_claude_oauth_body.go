@@ -9,11 +9,11 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/google/uuid"
 	"github.com/newcodebook/xoaai/internal/pkg/anthropicfp"
 	"github.com/newcodebook/xoaai/internal/pkg/claude"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
-	"github.com/google/uuid"
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 

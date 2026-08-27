@@ -10,8 +10,8 @@ import (
 	"math/rand/v2"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/dgraph-io/ristretto"
+	"github.com/newcodebook/xoaai/internal/config"
 )
 
 const apiKeyAuthSnapshotVersion = 20 // v20: group long-context and model pricing fields (force refresh of pre-fix snapshots)

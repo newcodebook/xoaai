@@ -28,7 +28,7 @@ test -s backend/resources/model-pricing/model_prices_and_context_window.json || 
 
 assert_line Dockerfile.goreleaser 'COPY --chown=xoaai:xoaai backend/resources /app/resources'
 assert_line deploy/Dockerfile 'COPY --from=backend-builder --chown=xoaai:xoaai /app/backend/resources /app/resources'
-assert_count .goreleaser.yaml '      - backend/resources' 4
+assert_count .goreleaser.yaml '      - backend/resources' 2
 assert_count .goreleaser.simple.yaml '      - backend/resources' 1
 
 printf 'docker runtime resources test passed\n'

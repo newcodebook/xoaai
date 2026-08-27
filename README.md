@@ -156,6 +156,12 @@ Deploy with Docker Compose, including PostgreSQL and Redis containers.
 - Docker 20.10+
 - Docker Compose v2+
 
+The canonical container image is published at `ghcr.io/newcodebook/xoaai`.
+Compose accepts an `XOAAI_IMAGE` override and defaults to
+`ghcr.io/newcodebook/xoaai:latest`. Pin a release tag or digest in production
+to prevent implicit `latest` upgrades. The public GHCR package requires no
+registry login.
+
 #### Quick Start (One-Click Deployment)
 
 Use the automated deployment script for easy setup:
@@ -216,6 +222,9 @@ ADMIN_PASSWORD=your_admin_password
 
 # Optional: Custom port
 SERVER_PORT=8080
+
+# Optional: pin a production release
+XOAAI_IMAGE=ghcr.io/newcodebook/xoaai:1.0.0
 ```
 
 **Generate secure secrets:**

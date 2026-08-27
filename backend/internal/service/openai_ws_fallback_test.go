@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/config"
 	coderws "github.com/coder/websocket"
+	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/stretchr/testify/require"
 )
 

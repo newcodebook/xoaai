@@ -12,6 +12,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/google/uuid"
 	"github.com/newcodebook/xoaai/internal/domain"
 	"github.com/newcodebook/xoaai/internal/pkg/antigravity"
 	"github.com/newcodebook/xoaai/internal/pkg/gemini"
@@ -21,7 +22,6 @@ import (
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/google/uuid"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"

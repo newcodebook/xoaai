@@ -8,12 +8,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	pkghttputil "github.com/newcodebook/xoaai/internal/pkg/httputil"
 	"github.com/newcodebook/xoaai/internal/pkg/ip"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	middleware2 "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 	"github.com/tidwall/gjson"
 	"go.uber.org/zap"
 )

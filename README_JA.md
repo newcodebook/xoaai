@@ -155,6 +155,12 @@ PostgreSQL と Redis のコンテナを含む Docker Compose でデプロイし�
 - Docker 20.10+
 - Docker Compose v2+
 
+公式コンテナイメージは GitHub Container Registry の
+`ghcr.io/newcodebook/xoaai` で公開されます。Compose は `XOAAI_IMAGE` で
+イメージを上書きでき、デフォルトは `ghcr.io/newcodebook/xoaai:latest` です。
+本番環境では暗黙のアップグレードを避けるため、リリースタグまたは digest を
+固定してください。公開 GHCR パッケージへのログインは不要です。
+
 #### クイックスタート（ワンクリックデプロイ）
 
 自動デプロイスクリプトを使用して簡単にセットアップできます:
@@ -215,6 +221,9 @@ ADMIN_PASSWORD=your_admin_password
 
 # オプション: カスタムポート
 SERVER_PORT=8080
+
+# オプション: 本番リリースを固定
+XOAAI_IMAGE=ghcr.io/newcodebook/xoaai:1.0.0
 ```
 
 **セキュアなシークレットの生成方法:**

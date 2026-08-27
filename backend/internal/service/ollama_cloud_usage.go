@@ -18,10 +18,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/newcodebook/xoaai/internal/config"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
-	"github.com/google/uuid"
 	"golang.org/x/net/http/httpguts"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sync/singleflight"

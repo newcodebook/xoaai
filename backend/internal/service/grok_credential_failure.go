@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/gin-gonic/gin"
+	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 )
 
 const (

@@ -5,10 +5,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/handler"
 	adminhandler "github.com/newcodebook/xoaai/internal/handler/admin"
 	servermiddleware "github.com/newcodebook/xoaai/internal/server/middleware"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 )
 

@@ -9,12 +9,12 @@ import (
 	"sync"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/handler/dto"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/response"
 	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 )
 
 const grokSSOImportConcurrency = 3

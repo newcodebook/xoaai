@@ -16,10 +16,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/golang-jwt/jwt/v5"
 	"github.com/newcodebook/xoaai/internal/pkg/proxyurl"
 	"github.com/newcodebook/xoaai/internal/pkg/proxyutil"
 	"github.com/newcodebook/xoaai/internal/pkg/servertiming"
-	"github.com/golang-jwt/jwt/v5"
 )
 
 const (

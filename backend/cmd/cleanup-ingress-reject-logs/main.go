@@ -13,10 +13,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/lib/pq"
 	_ "github.com/newcodebook/xoaai/ent/runtime"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/repository"
-	"github.com/lib/pq"
 )
 
 const classifierVersion = "ingress-reject-v1"

@@ -175,9 +175,9 @@ func testPluginManifest(files map[string][]byte) PluginManifest {
 			XOAAI:                   ">=0.1.170 <0.2.0",
 			RecommendedXOAAIVersion: "0.1.179",
 			TestedXOAAIVersions:     []string{"0.1.179"},
-			PluginProtocol:            pluginv1.ProtocolVersion,
-			TransportAPI:              pluginv1.TransportAPIVersion,
-			UIBridge:                  pluginv1.UIBridgeVersion,
+			PluginProtocol:          pluginv1.ProtocolVersion,
+			TransportAPI:            pluginv1.TransportAPIVersion,
+			UIBridge:                pluginv1.UIBridgeVersion,
 		},
 		Capabilities: []PluginCapability{{
 			ID:          PluginCapabilityOpenAIOAuthOutbound,

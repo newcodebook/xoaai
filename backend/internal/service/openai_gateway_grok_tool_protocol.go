@@ -8,8 +8,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/newcodebook/xoaai/internal/pkg/apicompat"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/apicompat"
 	"github.com/tidwall/gjson"
 )
 

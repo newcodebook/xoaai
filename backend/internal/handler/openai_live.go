@@ -9,11 +9,11 @@ import (
 	"strconv"
 	"strings"
 
+	coderws "github.com/coder/websocket"
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/pkg/ip"
 	middleware2 "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	coderws "github.com/coder/websocket"
-	"github.com/gin-gonic/gin"
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 	"go.uber.org/zap"

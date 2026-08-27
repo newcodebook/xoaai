@@ -100,10 +100,13 @@ export XOAAI_ENV_FILE=/absolute/path/to/xoaai.env
 Apple-specific image overrides are available:
 
 ```dotenv
-APPLE_CONTAINER_XOAAI_IMAGE=weishaw/xoaai:latest
+APPLE_CONTAINER_XOAAI_IMAGE=ghcr.io/newcodebook/xoaai:latest
 APPLE_CONTAINER_POSTGRES_IMAGE=postgres:18-alpine
 APPLE_CONTAINER_REDIS_IMAGE=redis:8-alpine
 ```
+
+For production, replace `latest` with a release tag or digest so upgrades are
+explicit and rollback inputs remain known.
 
 The normal `up` command recreates the application container, so application environment changes are applied immediately. Use `up --recreate` when changing PostgreSQL or Redis container images or Redis runtime configuration. Persistent data remains in named volumes.
 
@@ -175,7 +178,7 @@ To restore these backups into an existing stack, first ensure the image versions
 
 # Remove only the app container so a helper can mount its named volume.
 container delete xoaai-apple
-XOAAI_IMAGE=weishaw/xoaai:latest # Match APPLE_CONTAINER_XOAAI_IMAGE in .env.
+XOAAI_IMAGE=ghcr.io/newcodebook/xoaai:latest # Match APPLE_CONTAINER_XOAAI_IMAGE in .env.
 container run --rm --name xoaai-apple-data-restore \
   --entrypoint /bin/sh \
   --volume xoaai-apple-data:/restore \

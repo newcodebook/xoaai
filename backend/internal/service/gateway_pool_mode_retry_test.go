@@ -7,8 +7,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/stretchr/testify/require"
 )
 

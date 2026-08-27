@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/newcodebook/xoaai/internal/pkg/ctxkey"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/ctxkey"
 	"github.com/stretchr/testify/require"
 )
 

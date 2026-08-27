@@ -6,8 +6,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/stretchr/testify/require"
 	"github.com/tidwall/gjson"
 	"go.uber.org/zap"

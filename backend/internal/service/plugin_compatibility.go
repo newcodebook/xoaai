@@ -18,9 +18,9 @@ func EvaluatePluginCompatibility(manifest PluginManifest, host PluginHostInfo) P
 		CurrentXOAAI:     host.Version,
 		RequiredXOAAI:    manifest.Requires.XOAAI,
 		RecommendedXOAAI: manifest.Requires.RecommendedXOAAIVersion,
-		PluginProtocol:     manifest.Requires.PluginProtocol,
-		TransportAPI:       manifest.Requires.TransportAPI,
-		UIBridge:           manifest.Requires.UIBridge,
+		PluginProtocol:   manifest.Requires.PluginProtocol,
+		TransportAPI:     manifest.Requires.TransportAPI,
+		UIBridge:         manifest.Requires.UIBridge,
 	}
 	if manifest.Requires.PluginProtocol != pluginv1.ProtocolVersion ||
 		manifest.Requires.TransportAPI != pluginv1.TransportAPIVersion ||

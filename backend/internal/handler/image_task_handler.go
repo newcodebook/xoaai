@@ -11,12 +11,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	pkghttputil "github.com/newcodebook/xoaai/internal/pkg/httputil"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	middleware2 "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 

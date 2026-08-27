@@ -12,8 +12,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/newcodebook/xoaai/internal/pkg/openai_compat"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/openai_compat"
 	"github.com/stretchr/testify/require"
 	"github.com/tidwall/gjson"
 )

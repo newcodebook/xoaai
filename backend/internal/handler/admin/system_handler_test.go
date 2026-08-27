@@ -12,8 +12,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/stretchr/testify/require"
 )
 

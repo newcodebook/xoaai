@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/pkg/response"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 )
 
 // GetDashboardOverview returns vNext ops dashboard overview (raw path).

@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/lib/pq"
 	"github.com/newcodebook/xoaai/internal/pkg/timezone"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/lib/pq"
 )
 
 type dashboardAggregationRepository struct {

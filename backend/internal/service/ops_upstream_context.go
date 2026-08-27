@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/pkg/ctxkey"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/ctxkey"
 )
 
 // Gin context keys used by Ops error logger for capturing upstream error details.

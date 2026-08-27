@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/tidwall/gjson"
 )
 

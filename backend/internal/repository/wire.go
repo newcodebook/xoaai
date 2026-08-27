@@ -6,10 +6,10 @@ import (
 	"errors"
 
 	entsql "entgo.io/ent/dialect/sql"
+	"github.com/google/wire"
 	"github.com/newcodebook/xoaai/ent"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/google/wire"
 	"github.com/redis/go-redis/v9"
 )
 

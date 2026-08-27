@@ -13,13 +13,13 @@ import (
 	"testing"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/pkg/apicompat"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/pkg/openai"
 	"github.com/newcodebook/xoaai/internal/pkg/openai_compat"
 	"github.com/newcodebook/xoaai/internal/pkg/tlsfingerprint"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 	"github.com/tidwall/gjson"
 )

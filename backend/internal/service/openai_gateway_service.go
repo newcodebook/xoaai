@@ -15,14 +15,14 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/cespare/xxhash/v2"
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/pkg/ip"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/pkg/openai"
 	"github.com/newcodebook/xoaai/internal/platform/liveattestation"
 	"github.com/newcodebook/xoaai/internal/util/responseheaders"
-	"github.com/cespare/xxhash/v2"
-	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 

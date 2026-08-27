@@ -15,9 +15,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	coderws "github.com/coder/websocket"
 	"github.com/google/uuid"
+	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/tidwall/gjson"
 	"go.uber.org/zap"
 )

@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/uuid"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
-	"github.com/google/uuid"
 	"go.uber.org/zap"
 )
 

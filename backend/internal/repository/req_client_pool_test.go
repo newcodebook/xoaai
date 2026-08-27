@@ -11,8 +11,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/newcodebook/xoaai/internal/pkg/servertiming"
 	"github.com/imroc/req/v3"
+	"github.com/newcodebook/xoaai/internal/pkg/servertiming"
 	"github.com/stretchr/testify/require"
 )
 

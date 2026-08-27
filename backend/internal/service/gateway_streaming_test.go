@@ -13,8 +13,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/stretchr/testify/require"
 )
 

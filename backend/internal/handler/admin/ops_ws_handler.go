@@ -15,11 +15,11 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/gin-gonic/gin"
+	"github.com/gorilla/websocket"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	servermiddleware "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
-	"github.com/gorilla/websocket"
 )
 
 type OpsWSProxyConfig struct {

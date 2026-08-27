@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/lib/pq"
+	"github.com/newcodebook/xoaai/internal/service"
 )
 
 type userGroupRateRepository struct {

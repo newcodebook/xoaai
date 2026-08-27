@@ -5,10 +5,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 	"github.com/newcodebook/xoaai/internal/pkg/response"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 )
 
 type ContentModerationHandler struct {

@@ -12,10 +12,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 )
 

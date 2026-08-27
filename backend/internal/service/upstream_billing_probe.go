@@ -19,10 +19,10 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/pkg/tlsfingerprint"
-	"github.com/google/uuid"
 	"golang.org/x/sync/errgroup"
 	"golang.org/x/sync/singleflight"
 )

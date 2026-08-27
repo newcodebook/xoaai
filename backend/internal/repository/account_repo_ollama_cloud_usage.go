@@ -6,9 +6,9 @@ import (
 	"errors"
 	"time"
 
+	"github.com/lib/pq"
 	dbent "github.com/newcodebook/xoaai/ent"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/lib/pq"
 )
 
 const (

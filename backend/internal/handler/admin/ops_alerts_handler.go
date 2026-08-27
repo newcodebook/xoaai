@@ -9,11 +9,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
 	"github.com/newcodebook/xoaai/internal/pkg/response"
 	"github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
-	"github.com/gin-gonic/gin/binding"
 )
 
 var validOpsAlertMetricTypes = []string{

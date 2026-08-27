@@ -14,9 +14,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/gin-gonic/gin"
 	"github.com/imroc/req/v3"
+	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/stretchr/testify/require"
 	"github.com/tidwall/gjson"
 )

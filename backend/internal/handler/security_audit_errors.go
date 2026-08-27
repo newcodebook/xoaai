@@ -7,11 +7,11 @@ import (
 	"strings"
 	"time"
 
+	coderws "github.com/coder/websocket"
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/pkg/googleapi"
 	"github.com/newcodebook/xoaai/internal/securityaudit"
 	"github.com/newcodebook/xoaai/internal/service"
-	coderws "github.com/coder/websocket"
-	"github.com/gin-gonic/gin"
 )
 
 func (h *OpenAIGatewayHandler) openAISecurityAuditError(c *gin.Context, decision *securityaudit.Decision) {

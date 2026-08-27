@@ -7,8 +7,8 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/imroc/req/v3"
+	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/stretchr/testify/require"
 )
 

@@ -8,12 +8,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/lib/pq"
 	dbent "github.com/newcodebook/xoaai/ent"
 	"github.com/newcodebook/xoaai/ent/channelmonitor"
 	"github.com/newcodebook/xoaai/ent/channelmonitorhistory"
 	"github.com/newcodebook/xoaai/internal/domain"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/lib/pq"
 
 	entsql "entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqljson"

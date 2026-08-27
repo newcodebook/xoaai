@@ -49,12 +49,18 @@ npm install -g pnpm
 |----------|----------|----------|
 | **backend-ci.yml** | push, pull_request | 单元测试 + 集成测试 + golangci-lint v2.13 |
 | **security-scan.yml** | push, pull_request, 每周一 | govulncheck + gosec + pnpm audit |
-| **release.yml** | tag `v*` | 构建发布（PR 不触发） |
+| **release.yml** | tag `v*` | 构建 GitHub Release 并发布 GHCR 镜像（PR 不触发） |
 
 ### CI 要求
 
 - Go 版本必须是 **1.27.0**：三个 workflow 都用 `go-version-file: backend/go.mod` 取版本，随后硬断言 `go version | grep -q 'go1.27.0'`。升级 Go 时要同时改 `backend/go.mod`、`backend-ci.yml`（两处）、`release.yml`、`security-scan.yml` 里的这句断言，**以及三个 Dockerfile 里的 Go 构建镜像**（`Dockerfile` / `deploy/Dockerfile` 的 `ARG GOLANG_IMAGE`、`backend/Dockerfile` 的 `FROM golang:`）。前者漏了 CI 会在版本校验步骤直接失败；**后者漏了 CI 不会报，而是等到有人用这些 Dockerfile 构建时才失败**（`go.mod requires go >= X (running Y; GOTOOLCHAIN=local)`）。
 - 前端使用 `pnpm install --frozen-lockfile`，必须提交 `pnpm-lock.yaml`
+- 官方容器镜像只发布到 `ghcr.io/newcodebook/xoaai`。Release 工作流使用当前
+  GitHub 仓库所有者、内置 `GITHUB_TOKEN` 和 `packages: write`，不得重新引入
+  个人或第三方容器 registry 账号凭据。
+- GitHub 组织管理员必须将 `xoaai` Package 可见性设为 Public；公开镜像部署
+  无需登录。生产 Compose 应通过 `XOAAI_IMAGE` 固定具体版本标签或 digest，
+  不应长期跟随 `latest`。
 
 ### 本地测试命令
 

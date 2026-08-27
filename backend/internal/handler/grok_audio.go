@@ -10,12 +10,12 @@ import (
 	"strings"
 	"time"
 
+	coderws "github.com/coder/websocket"
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/pkg/ip"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	middleware2 "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	coderws "github.com/coder/websocket"
-	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 

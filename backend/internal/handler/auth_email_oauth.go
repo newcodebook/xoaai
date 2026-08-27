@@ -9,14 +9,14 @@ import (
 	"net/url"
 	"strings"
 
+	"github.com/gin-gonic/gin"
+	"github.com/imroc/req/v3"
 	dbent "github.com/newcodebook/xoaai/ent"
 	"github.com/newcodebook/xoaai/internal/config"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/oauth"
 	"github.com/newcodebook/xoaai/internal/pkg/response"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
-	"github.com/imroc/req/v3"
 	"github.com/tidwall/gjson"
 )
 

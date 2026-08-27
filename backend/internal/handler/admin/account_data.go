@@ -10,11 +10,11 @@ import (
 
 	"log/slog"
 
+	"github.com/gin-gonic/gin"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/openai"
 	"github.com/newcodebook/xoaai/internal/pkg/response"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 )
 
 const (

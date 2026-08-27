@@ -10,9 +10,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/gin-gonic/gin"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	servermiddleware "github.com/newcodebook/xoaai/internal/server/middleware"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 )
 

@@ -9,12 +9,12 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/gin-gonic/gin"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/ip"
 	"github.com/newcodebook/xoaai/internal/pkg/response"
 	middleware2 "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 )
 
 type PasskeyHandler struct {

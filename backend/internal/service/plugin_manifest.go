@@ -48,9 +48,9 @@ type PluginRequirements struct {
 	XOAAI                   string   `json:"xoaai"`
 	RecommendedXOAAIVersion string   `json:"recommended_xoaai_version,omitempty"`
 	TestedXOAAIVersions     []string `json:"tested_xoaai_versions,omitempty"`
-	PluginProtocol            int      `json:"plugin_protocol"`
-	TransportAPI              int      `json:"transport_api"`
-	UIBridge                  int      `json:"ui_bridge"`
+	PluginProtocol          int      `json:"plugin_protocol"`
+	TransportAPI            int      `json:"transport_api"`
+	UIBridge                int      `json:"ui_bridge"`
 }
 
 type PluginCapability struct {
@@ -75,16 +75,16 @@ type PluginSignature struct {
 
 // PluginCompatibility 是管理页面展示和启用门禁共同使用的兼容性结论。
 type PluginCompatibility struct {
-	Compatible         bool   `json:"compatible"`
-	Tested             bool   `json:"tested"`
-	Status             string `json:"status"`
-	Message            string `json:"message"`
+	Compatible       bool   `json:"compatible"`
+	Tested           bool   `json:"tested"`
+	Status           string `json:"status"`
+	Message          string `json:"message"`
 	CurrentXOAAI     string `json:"current_xoaai_version"`
 	RequiredXOAAI    string `json:"required_xoaai_version"`
 	RecommendedXOAAI string `json:"recommended_xoaai_version"`
-	PluginProtocol     int    `json:"plugin_protocol"`
-	TransportAPI       int    `json:"transport_api"`
-	UIBridge           int    `json:"ui_bridge"`
+	PluginProtocol   int    `json:"plugin_protocol"`
+	TransportAPI     int    `json:"transport_api"`
+	UIBridge         int    `json:"ui_bridge"`
 }
 
 type PluginInstallation struct {

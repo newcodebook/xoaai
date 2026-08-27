@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/lib/pq"
+	"github.com/newcodebook/xoaai/internal/service"
 )
 
 // --- 模型定价 ---

@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/imroc/req/v3"
 	"github.com/newcodebook/xoaai/internal/config"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
-	"github.com/imroc/req/v3"
 )
 
 // CoerceDingTalkCorpPolicyForWrite 是 coerceDeprecatedDingTalkCorpPolicy 的导出版本，

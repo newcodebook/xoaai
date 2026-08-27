@@ -10,9 +10,9 @@ import (
 	"net/url"
 	"strings"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/pkg/apicompat"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
-	"github.com/gin-gonic/gin"
 	"github.com/tidwall/gjson"
 	"github.com/tiktoken-go/tokenizer"
 	"go.uber.org/zap"
