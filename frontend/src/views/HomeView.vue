@@ -105,10 +105,10 @@
 
         <!-- Desktop nav links -->
         <div class="nav-links">
-          <a href="#features" class="nav-link" @click.prevent="scrollToSection('features')">{{ t('home.nav.products') }}</a>
-          <a href="#comparison" class="nav-link" @click.prevent="scrollToSection('comparison')">{{ t('home.nav.pricing') }}</a>
+          <router-link to="/products" class="nav-link">{{ t('home.nav.products') }}</router-link>
+          <router-link to="/pricing" class="nav-link">{{ t('home.nav.pricing') }}</router-link>
+          <router-link to="/help" class="nav-link">{{ t('home.nav.help') }}</router-link>
           <a v-if="docUrl" :href="docUrl" target="_blank" rel="noopener noreferrer" class="nav-link">{{ t('home.nav.docs') }}</a>
-          <router-link v-if="showModelPlazaEntry" to="/model-plaza" class="nav-link">{{ t('nav.modelPlaza') }}</router-link>
         </div>
 
         <!-- Right actions -->
@@ -138,8 +138,9 @@
 
       <!-- Mobile menu -->
       <div class="mobile-menu" :class="{ 'mobile-menu-open': mobileMenuOpen }">
-        <a href="#features" class="mobile-link" @click.prevent="scrollToSection('features'); mobileMenuOpen = false">{{ t('home.nav.products') }}</a>
-        <a href="#comparison" class="mobile-link" @click.prevent="scrollToSection('comparison'); mobileMenuOpen = false">{{ t('home.nav.pricing') }}</a>
+        <router-link to="/products" class="mobile-link" @click="mobileMenuOpen = false">{{ t('home.nav.products') }}</router-link>
+        <router-link to="/pricing" class="mobile-link" @click="mobileMenuOpen = false">{{ t('home.nav.pricing') }}</router-link>
+        <router-link to="/help" class="mobile-link" @click="mobileMenuOpen = false">{{ t('home.nav.help') }}</router-link>
         <a v-if="docUrl" :href="docUrl" target="_blank" rel="noopener noreferrer" class="mobile-link">{{ t('home.nav.docs') }}</a>
         <router-link v-if="showModelPlazaEntry" to="/model-plaza" class="mobile-link" @click="mobileMenuOpen = false">{{ t('nav.modelPlaza') }}</router-link>
         <div class="mobile-menu-divider"></div>
@@ -277,23 +278,23 @@
           <div class="footer-col">
             <h4 class="footer-col-title">{{ t('home.footer.product') }}</h4>
             <ul class="footer-col-links">
-              <li><a href="#features" @click.prevent="scrollToSection('features')">{{ t('home.footer.aiServices') }}</a></li>
-              <li><a href="#comparison" @click.prevent="scrollToSection('comparison')">{{ t('home.footer.pricing') }}</a></li>
+              <li><router-link to="/products">{{ t('home.footer.aiServices') }}</router-link></li>
+              <li><router-link to="/pricing">{{ t('home.footer.pricing') }}</router-link></li>
               <li><router-link to="/key-usage">{{ t('home.footer.apiUsage') }}</router-link></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4 class="footer-col-title">{{ t('home.footer.support') }}</h4>
             <ul class="footer-col-links">
+              <li><router-link to="/help">{{ t('home.footer.quickStart') }}</router-link></li>
               <li v-if="docUrl"><a :href="docUrl" target="_blank" rel="noopener noreferrer">{{ t('home.footer.documentation') }}</a></li>
-              <li v-if="showModelPlazaEntry"><router-link to="/model-plaza">{{ t('nav.modelPlaza') }}</router-link></li>
             </ul>
           </div>
           <div class="footer-col">
             <h4 class="footer-col-title">{{ t('home.footer.legal') }}</h4>
             <ul class="footer-col-links">
-              <li><a href="#">{{ t('home.footer.termsOfService') }}</a></li>
-              <li><a href="#">{{ t('home.footer.privacyPolicy') }}</a></li>
+              <li><router-link to="/legal/terms-of-service">{{ t('home.footer.termsOfService') }}</router-link></li>
+              <li><router-link to="/legal/privacy-policy">{{ t('home.footer.privacyPolicy') }}</router-link></li>
             </ul>
           </div>
         </div>
@@ -353,16 +354,6 @@ const mobileMenuOpen = ref(false)
 
 // Header scroll effect
 const headerScrolled = ref(false)
-
-// Smooth scroll to section
-function scrollToSection(id: string) {
-  const el = document.getElementById(id)
-  if (el) {
-    const headerHeight = 64
-    const top = el.getBoundingClientRect().top + window.scrollY - headerHeight
-    window.scrollTo({ top, behavior: 'smooth' })
-  }
-}
 
 // Site settings
 const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'XOAAI')

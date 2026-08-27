@@ -158,6 +158,36 @@ const routes: RouteRecordRaw[] = [
     }
   },
   {
+    path: '/products',
+    name: 'Products',
+    component: () => import('@/views/public/ProductsView.vue'),
+    meta: {
+      requiresAuth: false,
+      title: 'Products',
+      titleKey: 'products.title'
+    }
+  },
+  {
+    path: '/pricing',
+    name: 'Pricing',
+    component: () => import('@/views/public/PricingView.vue'),
+    meta: {
+      requiresAuth: false,
+      title: 'Pricing',
+      titleKey: 'pricing.title'
+    }
+  },
+  {
+    path: '/help',
+    name: 'Help',
+    component: () => import('@/views/public/HelpView.vue'),
+    meta: {
+      requiresAuth: false,
+      title: 'Quick Start',
+      titleKey: 'help.title'
+    }
+  },
+  {
     path: '/key-usage',
     name: 'KeyUsage',
     component: () => import('@/views/KeyUsageView.vue'),
