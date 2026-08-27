@@ -20,7 +20,7 @@
               <span class="model-provider">{{ t(`products.${m.key}.provider`) }}</span>
             </div>
             <p class="model-desc">{{ t(`products.${m.key}.desc`) }}</p>
-            <div class="model-models">{{ t(`products.${m.key}.models`) }}</div>
+            <div class="model-models">{{ m.catalogModels || t(`products.${m.key}.models`) }}</div>
           </div>
         </div>
       </div>
@@ -59,6 +59,7 @@ import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores'
 import PublicPageLayout from '@/components/layout/PublicPageLayout.vue'
 import Icon from '@/components/icons/Icon.vue'
+import modelCatalog from '@/generated/model-catalog.json'
 
 const { t } = useI18n()
 const authStore = useAuthStore()
@@ -66,11 +67,17 @@ const isAuthenticated = computed(() => authStore.isAuthenticated)
 const isAdmin = computed(() => authStore.isAdmin)
 const dashboardPath = computed(() => isAdmin.value ? '/admin/dashboard' : '/dashboard')
 
+// Build a lookup from provider key → catalog model list string
+const catalogModelsMap: Record<string, string> = {}
+for (const p of modelCatalog.providers) {
+  catalogModelsMap[p.key] = p.models
+}
+
 const models = [
-  { key: 'claude', letter: 'C', color: 'linear-gradient(135deg, #d97706, #ea580c)' },
-  { key: 'gpt', letter: 'G', color: 'linear-gradient(135deg, #10b981, #059669)' },
-  { key: 'gemini', letter: 'G', color: 'linear-gradient(135deg, #3b82f6, #2563eb)' },
-  { key: 'antigravity', letter: 'A', color: 'linear-gradient(135deg, #f43f5e, #db2777)' },
+  { key: 'claude', letter: 'C', color: 'linear-gradient(135deg, #d97706, #ea580c)', catalogModels: catalogModelsMap['anthropic'] },
+  { key: 'gpt', letter: 'G', color: 'linear-gradient(135deg, #10b981, #059669)', catalogModels: catalogModelsMap['openai'] },
+  { key: 'gemini', letter: 'G', color: 'linear-gradient(135deg, #3b82f6, #2563eb)', catalogModels: catalogModelsMap['google'] },
+  { key: 'antigravity', letter: 'A', color: 'linear-gradient(135deg, #f43f5e, #db2777)', catalogModels: '' },
 ]
 
 const features = [

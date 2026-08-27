@@ -82,6 +82,7 @@ import { useI18n } from 'vue-i18n'
 import { useAuthStore } from '@/stores'
 import PublicPageLayout from '@/components/layout/PublicPageLayout.vue'
 import Icon from '@/components/icons/Icon.vue'
+import modelCatalog from '@/generated/model-catalog.json'
 
 const { t } = useI18n()
 const authStore = useAuthStore()
@@ -89,20 +90,7 @@ const isAuthenticated = computed(() => authStore.isAuthenticated)
 const isAdmin = computed(() => authStore.isAdmin)
 const dashboardPath = computed(() => isAdmin.value ? '/admin/dashboard' : '/dashboard')
 
-const pricingRows = [
-  { model: 'Claude Opus 5', input: '$15.00', output: '$75.00', color: '#ea580c' },
-  { model: 'Claude Sonnet 5', input: '$3.00', output: '$15.00', color: '#ea580c' },
-  { model: 'Claude Opus 4', input: '$15.00', output: '$75.00', color: '#ea580c' },
-  { model: 'Claude Sonnet 4', input: '$3.00', output: '$15.00', color: '#ea580c' },
-  { model: 'Claude Haiku 4.5', input: '$0.80', output: '$4.00', color: '#ea580c' },
-  { model: 'GPT-4.1', input: '$2.00', output: '$8.00', color: '#10b981' },
-  { model: 'GPT-4.1 mini', input: '$0.40', output: '$1.60', color: '#10b981' },
-  { model: 'GPT-4o', input: '$2.50', output: '$10.00', color: '#10b981' },
-  { model: 'o3', input: '$2.00', output: '$8.00', color: '#10b981' },
-  { model: 'o4-mini', input: '$1.10', output: '$4.40', color: '#10b981' },
-  { model: 'Gemini 2.5 Pro', input: '$1.25', output: '$10.00', color: '#3b82f6' },
-  { model: 'Gemini 2.5 Flash', input: '$0.15', output: '$0.60', color: '#3b82f6' },
-]
+const pricingRows = modelCatalog.pricingRows
 </script>
 
 <style scoped>
