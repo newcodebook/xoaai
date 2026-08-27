@@ -152,19 +152,19 @@ export default {
       name: 'Claude',
       provider: 'Anthropic',
       desc: '最强大的推理、编程和分析 AI。完整支持 Claude 5 和 Claude 4 全系列。',
-      models: 'Claude Opus 5 · Claude Sonnet 4.6 · Claude Opus 4.8 · Claude Haiku 4.5',
+      models: 'Claude Opus 5 · Claude Fable 5 · Claude Sonnet 5 · Claude Haiku 4.5',
     },
     gpt: {
       name: 'ChatGPT',
       provider: 'OpenAI',
-      desc: '业界领先的对话和推理 AI。支持最新 GPT 5 和 o 系列模型。',
-      models: 'GPT-5.6 · GPT-5.5 · GPT-5.4 · o3 · o4-mini',
+      desc: '业界领先的对话和推理 AI。支持最新 GPT 5 系列模型。',
+      models: 'GPT-5.6 · GPT-5.5 · GPT-5.4 · GPT-5.2',
     },
     gemini: {
       name: 'Gemini',
       provider: 'Google',
       desc: 'Google 的多模态 AI，具备深度推理和超长上下文能力。',
-      models: 'Gemini 3.1 Flash · 2.5 Pro · 2.5 Flash',
+      models: 'Gemini 3.6 Flash · 3.5 Flash · 3.1 Pro',
     },
     antigravity: {
       name: 'Antigravity',

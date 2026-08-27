@@ -1,42 +1,64 @@
 {
-  "_generated": "2026-08-27T06:19:13.890Z",
-  "_source": "backend/resources/model-pricing/model_prices_and_context_window.json",
+  "_generated": "2026-08-27T06:37:19.891Z",
+  "_source": "https://github.com/PAIArtCom/model-specs",
+  "_version": "9b36c12f2afa",
   "providers": [
     {
       "key": "anthropic",
       "brand": "Claude",
       "company": "Anthropic",
       "color": "#ea580c",
-      "models": "Claude Opus 5 · Claude Sonnet 4.6 · Claude Opus 4.8 · Claude Haiku 4.5"
+      "models": "Claude Opus 4.1 · Claude Fable 5 · Claude Opus 4.5 · Claude Opus 4.6 · Claude Opus 4.7 · Claude Opus 4.8 · Claude Opus 5 · Claude Sonnet 4.5 · Claude Sonnet 4.6 · Claude Sonnet 5 · Claude Haiku 4.5"
     },
     {
       "key": "openai",
       "brand": "ChatGPT",
       "company": "OpenAI",
       "color": "#10b981",
-      "models": "GPT-5.6 Terra · GPT-5.6 Luna · GPT-5.5 · GPT-5.4 · GPT-5.4 mini · o3 · o4-mini"
+      "models": "GPT-5.5 · GPT-5.6 Sol · GPT-5.4 · GPT-5.6 Terra · GPT-5.2 · GPT-5.6 Luna · GPT-5.4 Mini"
     },
     {
       "key": "google",
       "brand": "Gemini",
       "company": "Google",
       "color": "#3b82f6",
-      "models": "Gemini 3.1 Flash · Gemini 2.5 Pro · Gemini 2.5 Flash"
+      "models": "Gemini 3.1 Pro · Gemini 3.5 Flash · Gemini 3.6 Flash"
     }
   ],
   "pricingRows": [
     {
-      "model": "Claude Opus 5",
+      "model": "Claude Opus 4.1",
+      "provider": "anthropic",
+      "input": "$15.00",
+      "output": "$75.00",
+      "color": "#ea580c"
+    },
+    {
+      "model": "Claude Fable 5",
+      "provider": "anthropic",
+      "input": "$10.00",
+      "output": "$50.00",
+      "color": "#ea580c"
+    },
+    {
+      "model": "Claude Opus 4.5",
       "provider": "anthropic",
       "input": "$5.00",
       "output": "$25.00",
       "color": "#ea580c"
     },
     {
-      "model": "Claude Sonnet 4.6",
+      "model": "Claude Opus 4.6",
       "provider": "anthropic",
-      "input": "$3.00",
-      "output": "$15.00",
+      "input": "$5.00",
+      "output": "$25.00",
+      "color": "#ea580c"
+    },
+    {
+      "model": "Claude Opus 4.7",
+      "provider": "anthropic",
+      "input": "$5.00",
+      "output": "$25.00",
       "color": "#ea580c"
     },
     {
@@ -47,6 +69,34 @@
       "color": "#ea580c"
     },
     {
+      "model": "Claude Opus 5",
+      "provider": "anthropic",
+      "input": "$5.00",
+      "output": "$25.00",
+      "color": "#ea580c"
+    },
+    {
+      "model": "Claude Sonnet 4.5",
+      "provider": "anthropic",
+      "input": "$3.00",
+      "output": "$15.00",
+      "color": "#ea580c"
+    },
+    {
+      "model": "Claude Sonnet 4.6",
+      "provider": "anthropic",
+      "input": "$3.00",
+      "output": "$15.00",
+      "color": "#ea580c"
+    },
+    {
+      "model": "Claude Sonnet 5",
+      "provider": "anthropic",
+      "input": "$2.00",
+      "output": "$10.00",
+      "color": "#ea580c"
+    },
+    {
       "model": "Claude Haiku 4.5",
       "provider": "anthropic",
       "input": "$1.00",
@@ -54,21 +104,14 @@
       "color": "#ea580c"
     },
     {
-      "model": "GPT-5.6 Terra",
-      "provider": "openai",
-      "input": "$2.00",
-      "output": "$12.00",
-      "color": "#10b981"
-    },
-    {
-      "model": "GPT-5.6 Luna",
-      "provider": "openai",
-      "input": "$0.20",
-      "output": "$1.20",
-      "color": "#10b981"
-    },
-    {
       "model": "GPT-5.5",
+      "provider": "openai",
+      "input": "$5.00",
+      "output": "$30.00",
+      "color": "#10b981"
+    },
+    {
+      "model": "GPT-5.6 Sol",
       "provider": "openai",
       "input": "$5.00",
       "output": "$30.00",
@@ -82,46 +125,76 @@
       "color": "#10b981"
     },
     {
-      "model": "GPT-5.4 mini",
+      "model": "GPT-5.6 Terra",
+      "provider": "openai",
+      "input": "$2.50",
+      "output": "$15.00",
+      "color": "#10b981"
+    },
+    {
+      "model": "GPT-5.2",
+      "provider": "openai",
+      "input": "$1.75",
+      "output": "$14.00",
+      "color": "#10b981"
+    },
+    {
+      "model": "GPT-5.6 Luna",
+      "provider": "openai",
+      "input": "$1.00",
+      "output": "$6.00",
+      "color": "#10b981"
+    },
+    {
+      "model": "GPT-5.4 Mini",
       "provider": "openai",
       "input": "$0.75",
       "output": "$4.50",
       "color": "#10b981"
     },
     {
-      "model": "o3",
-      "provider": "openai",
+      "model": "Gemini 3.1 Pro",
+      "provider": "google",
       "input": "$2.00",
-      "output": "$8.00",
-      "color": "#10b981"
-    },
-    {
-      "model": "o4-mini",
-      "provider": "openai",
-      "input": "$1.10",
-      "output": "$4.40",
-      "color": "#10b981"
-    },
-    {
-      "model": "Gemini 3.1 Flash",
-      "provider": "google",
-      "input": "$0.75",
-      "output": "$4.50",
+      "output": "$12.00",
       "color": "#3b82f6"
     },
     {
-      "model": "Gemini 2.5 Pro",
+      "model": "Gemini 3.5 Flash",
       "provider": "google",
-      "input": "$1.25",
-      "output": "$10.00",
+      "input": "$1.50",
+      "output": "$9.00",
       "color": "#3b82f6"
     },
     {
-      "model": "Gemini 2.5 Flash",
+      "model": "Gemini 3.6 Flash",
       "provider": "google",
-      "input": "$0.30",
-      "output": "$2.50",
+      "input": "$1.50",
+      "output": "$7.50",
       "color": "#3b82f6"
+    }
+  ],
+  "clients": [
+    {
+      "key": "claudeCode",
+      "displayName": "Claude Code",
+      "platform": "anthropic",
+      "models": "Claude Fable 5 · Claude Haiku 4.5 · Claude Opus 4.1 · Claude Opus 4.5 · Claude Opus 4.6 · Claude Opus 4.7 · Claude Opus 4.8 · Claude Opus 5 · Claude Sonnet 4.5 · Claude Sonnet 4.6 · Claude Sonnet 5",
+      "homepage": "https://code.claude.com"
+    },
+    {
+      "key": "codex",
+      "displayName": "ChatGPT Codex",
+      "platform": "openai",
+      "models": "GPT-5.2 · GPT-5.3 Codex Spark · GPT-5.4 · GPT-5.4 Mini · GPT-5.5 · GPT-5.6 Luna · GPT-5.6 Sol · GPT-5.6 Terra",
+      "homepage": "https://github.com/openai/codex"
+    },
+    {
+      "key": "antigravity",
+      "displayName": "Antigravity",
+      "platform": "mixed",
+      "models": "Claude Opus 4.6 · Claude Sonnet 4.6 · Gemini 3.1 Pro · Gemini 3.5 Flash · Gemini 3.6 Flash",
+      "homepage": "https://antigravity.google"
     }
   ]
 }

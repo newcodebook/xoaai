@@ -126,6 +126,7 @@ scripts
 !backend/scripts/resolve-version.sh
 !frontend/scripts/
 !frontend/scripts/**
+.catalog-cache.json
 .code-review-state
 #openspec/
 code-reviews/

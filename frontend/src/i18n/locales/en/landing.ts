@@ -152,19 +152,19 @@ export default {
       name: 'Claude',
       provider: 'Anthropic',
       desc: 'The most capable AI for reasoning, coding, and analysis. Full Claude 5 and Claude 4 family.',
-      models: 'Claude Opus 5 · Claude Sonnet 4.6 · Claude Opus 4.8 · Claude Haiku 4.5',
+      models: 'Claude Opus 5 · Claude Fable 5 · Claude Sonnet 5 · Claude Haiku 4.5',
     },
     gpt: {
       name: 'ChatGPT',
       provider: 'OpenAI',
-      desc: 'Industry-leading conversational and reasoning AI. Latest GPT 5 and o-series models.',
-      models: 'GPT-5.6 · GPT-5.5 · GPT-5.4 · o3 · o4-mini',
+      desc: 'Industry-leading conversational and reasoning AI. Latest GPT 5 series models.',
+      models: 'GPT-5.6 · GPT-5.5 · GPT-5.4 · GPT-5.2',
     },
     gemini: {
       name: 'Gemini',
       provider: 'Google',
       desc: 'Google\'s multimodal AI with deep reasoning and massive context windows.',
-      models: 'Gemini 3.1 Flash · 2.5 Pro · 2.5 Flash',
+      models: 'Gemini 3.6 Flash · 3.5 Flash · 3.1 Pro',
     },
     antigravity: {
       name: 'Antigravity',
