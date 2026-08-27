@@ -243,7 +243,6 @@ export default {
       env1: 'ANTHROPIC_BASE_URL=https://www.xoaai.com',
       env2: 'ANTHROPIC_AUTH_TOKEN={api_key}',
       step2: '正常运行 Claude Code',
-      note: '如果使用 Nginx，需开启 underscores_in_headers 以支持粘性会话。',
     },
     codex: {
       title: 'ChatGPT Codex',
@@ -253,7 +252,6 @@ export default {
       env1: 'OPENAI_BASE_URL=https://www.xoaai.com/v1',
       env2: 'OPENAI_API_KEY={api_key}',
       step2: '正常运行 Codex',
-      note: '如果使用 Nginx，需开启 underscores_in_headers 以支持粘性会话。',
     },
     antigravity: {
       title: 'Antigravity',

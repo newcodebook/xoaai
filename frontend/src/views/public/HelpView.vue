@@ -100,11 +100,6 @@
               </template>
 
               <p class="guide-step-label step2">{{ t(`help.${client.key}.step2`) }}</p>
-
-              <div v-if="client.note" class="guide-note">
-                <Icon name="bolt" size="sm" class="note-icon" />
-                <span>{{ t(`help.${client.key}.note`) }}</span>
-              </div>
             </div>
           </div>
         </div>
@@ -236,10 +231,10 @@ const ENV_LINES = {
 }
 
 const clients = [
-  { key: 'claudeCode' as ClientKey, letter: 'C', color: 'linear-gradient(135deg, #d97706, #ea580c)', note: true, tabs, configPath: CONFIG_SNIPPETS.claudeCode.path, configLang: CONFIG_SNIPPETS.claudeCode.lang, configContent: CONFIG_SNIPPETS.claudeCode.content, envLines: ENV_LINES.claudeCode },
-  { key: 'codex' as ClientKey, letter: 'Cx', color: 'linear-gradient(135deg, #10b981, #059669)', note: true, tabs, configPath: CONFIG_SNIPPETS.codex.path, configLang: CONFIG_SNIPPETS.codex.lang, configContent: CONFIG_SNIPPETS.codex.content, envLines: ENV_LINES.codex },
-  { key: 'antigravity' as ClientKey, letter: 'A', color: 'linear-gradient(135deg, #f43f5e, #db2777)', note: false, tabs, configPath: CONFIG_SNIPPETS.antigravity.path, configLang: CONFIG_SNIPPETS.antigravity.lang, configContent: CONFIG_SNIPPETS.antigravity.content, envLines: ENV_LINES.antigravity },
-  { key: 'opencode' as ClientKey, letter: 'O', color: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', note: false, tabs, configPath: CONFIG_SNIPPETS.opencode.path, configLang: CONFIG_SNIPPETS.opencode.lang, configContent: CONFIG_SNIPPETS.opencode.content, envLines: ENV_LINES.opencode },
+  { key: 'claudeCode' as ClientKey, letter: 'C', color: 'linear-gradient(135deg, #d97706, #ea580c)', tabs, configPath: CONFIG_SNIPPETS.claudeCode.path, configLang: CONFIG_SNIPPETS.claudeCode.lang, configContent: CONFIG_SNIPPETS.claudeCode.content, envLines: ENV_LINES.claudeCode },
+  { key: 'codex' as ClientKey, letter: 'Cx', color: 'linear-gradient(135deg, #10b981, #059669)', tabs, configPath: CONFIG_SNIPPETS.codex.path, configLang: CONFIG_SNIPPETS.codex.lang, configContent: CONFIG_SNIPPETS.codex.content, envLines: ENV_LINES.codex },
+  { key: 'antigravity' as ClientKey, letter: 'A', color: 'linear-gradient(135deg, #f43f5e, #db2777)', tabs, configPath: CONFIG_SNIPPETS.antigravity.path, configLang: CONFIG_SNIPPETS.antigravity.lang, configContent: CONFIG_SNIPPETS.antigravity.content, envLines: ENV_LINES.antigravity },
+  { key: 'opencode' as ClientKey, letter: 'O', color: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', tabs, configPath: CONFIG_SNIPPETS.opencode.path, configLang: CONFIG_SNIPPETS.opencode.lang, configContent: CONFIG_SNIPPETS.opencode.content, envLines: ENV_LINES.opencode },
 ]
 
 async function copyText(text: string, key: string) {
