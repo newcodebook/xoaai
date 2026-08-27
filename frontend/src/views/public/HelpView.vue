@@ -148,7 +148,7 @@ const CONFIG_SNIPPETS = {
     lang: 'json',
     content: `{
   "env": {
-    "ANTHROPIC_BASE_URL": "{base_url}/antigravity",
+    "ANTHROPIC_BASE_URL": "https://www.xoaai.com/antigravity",
     "ANTHROPIC_AUTH_TOKEN": "{api_key}"
   }
 }`,
@@ -158,7 +158,7 @@ const CONFIG_SNIPPETS = {
     lang: 'toml + json',
     content: `# ~/.codex/config.toml
 [model_providers.OpenAI]
-base_url = "{base_url}/v1"
+base_url = "https://www.xoaai.com/v1"
 
 # ~/.codex/auth.json
 {
@@ -170,7 +170,7 @@ base_url = "{base_url}/v1"
     lang: 'json',
     content: `{
   "env": {
-    "ANTHROPIC_BASE_URL": "{base_url}/antigravity",
+    "ANTHROPIC_BASE_URL": "https://www.xoaai.com/antigravity",
     "ANTHROPIC_AUTH_TOKEN": "{api_key}"
   }
 }`,
@@ -182,7 +182,7 @@ base_url = "{base_url}/v1"
   "provider": {
     "anthropic": {
       "options": {
-        "baseURL": "{base_url}/v1",
+        "baseURL": "https://www.xoaai.com/v1",
         "apiKey": "{api_key}"
       }
     }
