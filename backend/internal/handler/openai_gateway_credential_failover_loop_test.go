@@ -15,13 +15,13 @@ import (
 	"testing"
 	"time"
 
+	coderws "github.com/coder/websocket"
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/config"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	"github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	coderws "github.com/coder/websocket"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 )
 

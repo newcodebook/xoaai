@@ -10,13 +10,13 @@ import (
 	"strings"
 	"time"
 
+	"github.com/lib/pq"
 	dbent "github.com/newcodebook/xoaai/ent"
 	"github.com/newcodebook/xoaai/ent/apikey"
 	"github.com/newcodebook/xoaai/ent/group"
 	"github.com/newcodebook/xoaai/ent/schema/mixins"
 	"github.com/newcodebook/xoaai/ent/user"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/lib/pq"
 
 	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 

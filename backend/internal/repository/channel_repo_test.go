@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 	"github.com/lib/pq"
+	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 	"github.com/stretchr/testify/require"
 )
 

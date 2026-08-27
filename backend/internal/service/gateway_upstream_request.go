@@ -9,10 +9,10 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/google/uuid"
 	"github.com/newcodebook/xoaai/internal/pkg/claude"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/util/urlvalidator"
-	"github.com/google/uuid"
 	"github.com/tidwall/gjson"
 
 	"github.com/gin-gonic/gin"

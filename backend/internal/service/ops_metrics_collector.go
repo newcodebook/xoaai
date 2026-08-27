@@ -15,8 +15,8 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/google/uuid"
+	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/redis/go-redis/v9"
 	"github.com/shirou/gopsutil/v4/cpu"
 	"github.com/shirou/gopsutil/v4/mem"

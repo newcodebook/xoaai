@@ -18,11 +18,11 @@ import (
 	"time"
 	"unicode/utf8"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/pkg/ctxkey"
 	"github.com/newcodebook/xoaai/internal/pkg/ip"
 	middleware2 "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 )
 
 const (

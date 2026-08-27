@@ -10,14 +10,14 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"github.com/newcodebook/xoaai/internal/pkg/ip"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/pkg/websearch"
 	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	middleware2 "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"github.com/tidwall/gjson"
 	"go.uber.org/zap"
 )

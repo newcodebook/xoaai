@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/pkg/servertiming"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/servertiming"
 )
 
 const (

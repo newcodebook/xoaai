@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/pkg/antigravity"
 	"github.com/newcodebook/xoaai/internal/pkg/apicompat"
-	"github.com/gin-gonic/gin"
 )
 
 type antigravityCompatProtocol uint8

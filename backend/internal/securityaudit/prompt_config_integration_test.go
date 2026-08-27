@@ -11,11 +11,11 @@ import (
 	"testing"
 	"time"
 
+	"github.com/lib/pq"
 	"github.com/newcodebook/xoaai/internal/config"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/repository"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/lib/pq"
 	"github.com/redis/go-redis/v9"
 	"github.com/stretchr/testify/require"
 )

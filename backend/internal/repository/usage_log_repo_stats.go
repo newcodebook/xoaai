@@ -9,11 +9,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/lib/pq"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/pkg/timezone"
 	"github.com/newcodebook/xoaai/internal/pkg/usagestats"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/lib/pq"
 )
 
 // GetUserStatsAggregated returns aggregated usage statistics for a user using database-level aggregation

@@ -19,11 +19,11 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/cespare/xxhash/v2"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	"github.com/newcodebook/xoaai/internal/util/responseheaders"
-	"github.com/cespare/xxhash/v2"
 	gocache "github.com/patrickmn/go-cache"
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"

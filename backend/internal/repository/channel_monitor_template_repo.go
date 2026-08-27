@@ -6,11 +6,11 @@ import (
 	"encoding/json"
 	"fmt"
 
+	"github.com/lib/pq"
 	dbent "github.com/newcodebook/xoaai/ent"
 	"github.com/newcodebook/xoaai/ent/channelmonitor"
 	"github.com/newcodebook/xoaai/ent/channelmonitorrequesttemplate"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/lib/pq"
 )
 
 // channelMonitorRequestTemplateRepository 实现 service.ChannelMonitorRequestTemplateRepository。

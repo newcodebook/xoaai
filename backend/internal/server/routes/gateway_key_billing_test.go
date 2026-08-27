@@ -8,12 +8,12 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/handler"
 	servermiddleware "github.com/newcodebook/xoaai/internal/server/middleware"
 	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/newcodebook/xoaai/internal/web"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 )
 

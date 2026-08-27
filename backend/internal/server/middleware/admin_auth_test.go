@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 )
 

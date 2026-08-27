@@ -11,11 +11,11 @@ import (
 	"sync/atomic"
 	"time"
 
+	coderws "github.com/coder/websocket"
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/pkg/openai"
 	openaiwsv2 "github.com/newcodebook/xoaai/internal/service/openai_ws_v2"
-	coderws "github.com/coder/websocket"
-	"github.com/gin-gonic/gin"
 	"github.com/tidwall/gjson"
 )
 

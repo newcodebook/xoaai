@@ -5,8 +5,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/newcodebook/xoaai/internal/pkg/openai"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/openai"
 	"github.com/stretchr/testify/require"
 )
 

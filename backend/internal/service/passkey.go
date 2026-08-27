@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/config"
-	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/go-webauthn/webauthn/protocol"
 	"github.com/go-webauthn/webauthn/webauthn"
+	"github.com/newcodebook/xoaai/internal/config"
+	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 )
 
 const (

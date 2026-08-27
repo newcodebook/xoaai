@@ -19,6 +19,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/lib/pq"
 	dbent "github.com/newcodebook/xoaai/ent"
 	dbaccount "github.com/newcodebook/xoaai/ent/account"
 	dbaccountgroup "github.com/newcodebook/xoaai/ent/accountgroup"
@@ -28,7 +29,6 @@ import (
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 	"github.com/newcodebook/xoaai/internal/service"
-	"github.com/lib/pq"
 
 	entsql "entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqljson"

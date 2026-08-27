@@ -14,9 +14,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	"github.com/newcodebook/xoaai/internal/pkg/pagination"
-	"github.com/google/uuid"
 )
 
 const (

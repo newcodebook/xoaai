@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/lib/pq"
+	"github.com/newcodebook/xoaai/internal/service"
 )
 
 // auditLogRepository 审计日志仓储（raw SQL，append-only）。

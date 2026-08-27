@@ -13,9 +13,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/newcodebook/xoaai/internal/pkg/antigravity"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
-	"github.com/google/uuid"
 	"github.com/tidwall/gjson"
 )
 

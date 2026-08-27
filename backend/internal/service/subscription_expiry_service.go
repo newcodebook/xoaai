@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 	"github.com/google/uuid"
+	"github.com/newcodebook/xoaai/internal/pkg/pagination"
 )
 
 const (

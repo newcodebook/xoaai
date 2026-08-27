@@ -26,6 +26,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/pkg/claude"
 	"github.com/newcodebook/xoaai/internal/pkg/geminicli"
@@ -33,8 +35,6 @@ import (
 	"github.com/newcodebook/xoaai/internal/pkg/openai_compat"
 	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	"github.com/newcodebook/xoaai/internal/util/urlvalidator"
-	"github.com/gin-gonic/gin"
-	"github.com/google/uuid"
 	"github.com/tidwall/gjson"
 )
 

@@ -9,9 +9,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/go-webauthn/webauthn/webauthn"
 	"github.com/lib/pq"
+	"github.com/newcodebook/xoaai/internal/service"
 )
 
 type passkeyRepository struct {

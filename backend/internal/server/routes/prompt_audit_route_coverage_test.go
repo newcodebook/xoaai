@@ -10,10 +10,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/gin-gonic/gin"
 	"github.com/newcodebook/xoaai/internal/handler"
 	"github.com/newcodebook/xoaai/internal/securityaudit"
 	servermiddleware "github.com/newcodebook/xoaai/internal/server/middleware"
-	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/require"
 )
 

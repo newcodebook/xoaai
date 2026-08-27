@@ -6,13 +6,13 @@ import (
 	"os"
 	"time"
 
+	"github.com/google/wire"
 	dbent "github.com/newcodebook/xoaai/ent"
 	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/newcodebook/xoaai/internal/payment"
 	"github.com/newcodebook/xoaai/internal/pkg/antigravity"
 	"github.com/newcodebook/xoaai/internal/pkg/logger"
 	"github.com/newcodebook/xoaai/internal/pkg/xai"
-	"github.com/google/wire"
 	"github.com/redis/go-redis/v9"
 	"go.uber.org/zap"
 )

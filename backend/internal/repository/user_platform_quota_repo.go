@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/lib/pq"
 	dbent "github.com/newcodebook/xoaai/ent"
 	"github.com/newcodebook/xoaai/ent/userplatformquota"
 	"github.com/newcodebook/xoaai/internal/pkg/timezone"
-	"github.com/lib/pq"
 )
 
 // UserPlatformQuotaRecord 是 repository 层的传输结构体，

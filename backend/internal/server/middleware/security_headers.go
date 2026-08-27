@@ -7,8 +7,8 @@ import (
 	"log"
 	"strings"
 
-	"github.com/newcodebook/xoaai/internal/config"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/config"
 )
 
 const (

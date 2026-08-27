@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/pkg/apicompat"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/apicompat"
 	"github.com/stretchr/testify/require"
 )
 

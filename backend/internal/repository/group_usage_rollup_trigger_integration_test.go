@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/newcodebook/xoaai/migrations"
 	"github.com/lib/pq"
+	"github.com/newcodebook/xoaai/migrations"
 	"github.com/stretchr/testify/require"
 )
 

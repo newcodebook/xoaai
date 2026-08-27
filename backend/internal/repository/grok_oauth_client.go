@@ -13,12 +13,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/imroc/req/v3"
 	infraerrors "github.com/newcodebook/xoaai/internal/pkg/errors"
 	sharedhttp "github.com/newcodebook/xoaai/internal/pkg/httpclient"
 	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	"github.com/newcodebook/xoaai/internal/service"
 	"github.com/newcodebook/xoaai/internal/util/logredact"
-	"github.com/imroc/req/v3"
 )
 
 type grokOAuthClient struct {

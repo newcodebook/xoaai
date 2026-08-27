@@ -15,8 +15,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/payment"
 	"github.com/google/uuid"
+	"github.com/newcodebook/xoaai/internal/payment"
 	"github.com/shopspring/decimal"
 )
 

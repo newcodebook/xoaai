@@ -7,8 +7,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/xai"
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 )

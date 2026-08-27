@@ -11,9 +11,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/newcodebook/xoaai/internal/pkg/openai"
 	coderws "github.com/coder/websocket"
 	"github.com/gin-gonic/gin"
+	"github.com/newcodebook/xoaai/internal/pkg/openai"
 	"github.com/tidwall/gjson"
 	"github.com/tidwall/sjson"
 )
