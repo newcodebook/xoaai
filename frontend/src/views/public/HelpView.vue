@@ -147,7 +147,7 @@ const CONFIG_SNIPPETS = {
     lang: 'json',
     content: `{
   "env": {
-    "ANTHROPIC_BASE_URL": "https://www.xoaai.com/antigravity",
+    "ANTHROPIC_BASE_URL": "https://www.xoaai.com",
     "ANTHROPIC_AUTH_TOKEN": "{api_key}",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_ATTRIBUTION_HEADER": "0"
@@ -214,7 +214,7 @@ const activeTab = reactive<Record<string, string>>({
 
 const ENV_LINES = {
   claudeCode: [
-    'export ANTHROPIC_BASE_URL="https://www.xoaai.com/antigravity"',
+    'export ANTHROPIC_BASE_URL="https://www.xoaai.com"',
     'export ANTHROPIC_AUTH_TOKEN="{api_key}"',
     'export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1',
     'export CLAUDE_CODE_ATTRIBUTION_HEADER=0',

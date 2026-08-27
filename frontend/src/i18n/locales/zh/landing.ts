@@ -240,7 +240,7 @@ export default {
       desc: 'Anthropic 官方编程助手 CLI',
       configStep: '将 XOAAI 配置写入设置文件：',
       step1: '设置环境变量：',
-      env1: 'ANTHROPIC_BASE_URL=https://www.xoaai.com/antigravity',
+      env1: 'ANTHROPIC_BASE_URL=https://www.xoaai.com',
       env2: 'ANTHROPIC_AUTH_TOKEN={api_key}',
       step2: '正常运行 Claude Code',
       note: '如果使用 Nginx，需开启 underscores_in_headers 以支持粘性会话。',

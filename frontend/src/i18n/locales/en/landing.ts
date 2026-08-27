@@ -237,7 +237,7 @@ export default {
       desc: 'Anthropic\'s official coding assistant CLI',
       configStep: 'Add XOAAI configuration to your settings file:',
       step1: 'Set environment variables:',
-      env1: 'ANTHROPIC_BASE_URL=https://www.xoaai.com/antigravity',
+      env1: 'ANTHROPIC_BASE_URL=https://www.xoaai.com',
       env2: 'ANTHROPIC_AUTH_TOKEN={api_key}',
       step2: 'Run Claude Code as normal',
       note: 'If using Nginx, ensure underscores_in_headers is enabled for sticky sessions.',
