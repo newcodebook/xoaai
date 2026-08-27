@@ -21,12 +21,15 @@
     <header class="border-b border-gray-200 px-4 py-4 sm:px-6 dark:border-dark-800">
       <nav class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 sm:gap-4">
         <div class="flex min-w-0 flex-1 items-center gap-3">
-          <img
-            :src="siteLogo || '/logo.svg'"
-            alt="Logo"
-            class="h-9 w-9 shrink-0 rounded-lg object-contain"
-          />
-          <span class="min-w-0 truncate text-base font-semibold">{{ siteName }}</span>
+          <template v-if="hasCustomLogo">
+            <img
+              :src="siteLogo"
+              alt="Logo"
+              class="h-9 w-9 shrink-0 rounded-lg object-contain"
+            />
+            <span class="min-w-0 truncate text-base font-semibold">{{ siteName }}</span>
+          </template>
+          <img v-else src="/logo-full.svg" alt="XOAAI" class="h-7 w-auto shrink-0" />
         </div>
         <div class="flex max-w-full shrink-0 flex-wrap items-center justify-end gap-2">
           <LocaleSwitcher />
@@ -69,12 +72,15 @@
 
     <main class="flex min-w-0 flex-1 items-center justify-center px-4 py-16 sm:px-6">
       <div class="min-w-0 max-w-2xl text-center">
-        <img
-          :src="siteLogo || '/logo.svg'"
-          alt="Logo"
-          class="mx-auto mb-6 h-20 w-20 rounded-2xl object-contain"
-        />
-        <h1 class="[overflow-wrap:anywhere] text-3xl font-bold md:text-4xl">{{ siteName }}</h1>
+        <template v-if="hasCustomLogo">
+          <img
+            :src="siteLogo"
+            alt="Logo"
+            class="mx-auto mb-6 h-20 w-20 rounded-2xl object-contain"
+          />
+          <h1 class="[overflow-wrap:anywhere] text-3xl font-bold md:text-4xl">{{ siteName }}</h1>
+        </template>
+        <img v-else src="/logo-full.svg" alt="XOAAI" class="mx-auto mb-6 h-14 w-auto" />
         <p class="mt-4 whitespace-pre-wrap [overflow-wrap:anywhere] text-base text-gray-600 dark:text-dark-300">{{ siteSubtitle }}</p>
         <router-link
           :to="isAuthenticated ? dashboardPath : '/login'"
@@ -99,8 +105,11 @@
     <header class="landing-nav" :class="{ scrolled: headerScrolled }">
       <nav class="nav-inner">
         <router-link to="/" class="nav-brand">
-          <img :src="siteLogo || '/logo.svg'" alt="" class="nav-logo" />
-          <span class="nav-name">{{ siteName }}</span>
+          <template v-if="hasCustomLogo">
+            <img :src="siteLogo" alt="" class="nav-logo" />
+            <span class="nav-name">{{ siteName }}</span>
+          </template>
+          <img v-else src="/logo-full.svg" :alt="siteName" class="nav-wordmark" />
         </router-link>
 
         <!-- Desktop nav links -->
@@ -267,8 +276,11 @@
         <!-- Brand column -->
         <div class="footer-brand-col">
           <router-link to="/" class="footer-brand">
-            <img :src="siteLogo || '/logo.svg'" alt="" class="footer-logo" />
-            <span class="footer-name">{{ siteName }}</span>
+            <template v-if="hasCustomLogo">
+              <img :src="siteLogo" alt="" class="footer-logo" />
+              <span class="footer-name">{{ siteName }}</span>
+            </template>
+            <img v-else src="/logo-full.svg" :alt="siteName" class="footer-wordmark" />
           </router-link>
           <p class="footer-tagline">{{ t('home.footer.tagline') }}</p>
         </div>
@@ -358,6 +370,7 @@ const headerScrolled = ref(false)
 // Site settings
 const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'XOAAI')
 const siteLogo = computed(() => sanitizeUrl(appStore.cachedPublicSettings?.site_logo || appStore.siteLogo || '', { allowRelative: true, allowDataUrl: true }))
+const hasCustomLogo = computed(() => !!siteLogo.value)
 const siteSubtitle = computed(() => appStore.cachedPublicSettings?.site_subtitle || 'All AI Services, One Platform')
 const docUrl = computed(() => sanitizeUrl(appStore.cachedPublicSettings?.doc_url || appStore.docUrl || ''))
 const homeContent = computed(() => appStore.cachedPublicSettings?.home_content || '')
@@ -529,6 +542,11 @@ onUnmounted(() => {
   font-weight: 700;
   font-size: 18px;
   letter-spacing: -0.02em;
+}
+.nav-wordmark {
+  height: 28px;
+  width: auto;
+  display: block;
 }
 .nav-links {
   display: flex;
@@ -1112,6 +1130,11 @@ onUnmounted(() => {
   font-weight: 700;
   font-size: 16px;
   letter-spacing: -0.02em;
+}
+.footer-wordmark {
+  height: 26px;
+  width: auto;
+  display: block;
 }
 .footer-tagline {
   font-size: 14px;

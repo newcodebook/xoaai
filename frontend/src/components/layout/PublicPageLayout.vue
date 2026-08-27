@@ -4,8 +4,11 @@
     <header class="pub-nav" :class="{ scrolled: headerScrolled }">
       <nav class="pub-nav-inner">
         <router-link to="/" class="pub-brand">
-          <img :src="siteLogo || '/logo.svg'" alt="" class="pub-logo" />
-          <span class="pub-name">{{ siteName }}</span>
+          <template v-if="hasCustomLogo">
+            <img :src="siteLogo" alt="" class="pub-logo" />
+            <span class="pub-name">{{ siteName }}</span>
+          </template>
+          <img v-else src="/logo-full.svg" :alt="siteName" class="pub-wordmark" />
         </router-link>
 
         <div class="pub-links">
@@ -56,8 +59,11 @@
       <div class="pub-footer-main">
         <div class="pub-footer-brand-col">
           <router-link to="/" class="pub-footer-brand">
-            <img :src="siteLogo || '/logo.svg'" alt="" class="pub-footer-logo" />
-            <span class="pub-footer-name">{{ siteName }}</span>
+            <template v-if="hasCustomLogo">
+              <img :src="siteLogo" alt="" class="pub-footer-logo" />
+              <span class="pub-footer-name">{{ siteName }}</span>
+            </template>
+            <img v-else src="/logo-full.svg" :alt="siteName" class="pub-footer-wordmark" />
           </router-link>
           <p class="pub-footer-tagline">{{ t('home.footer.tagline') }}</p>
         </div>
@@ -107,6 +113,7 @@ const appStore = useAppStore()
 
 const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'XOAAI')
 const siteLogo = computed(() => sanitizeUrl(appStore.cachedPublicSettings?.site_logo || appStore.siteLogo || '', { allowRelative: true, allowDataUrl: true }))
+const hasCustomLogo = computed(() => !!siteLogo.value)
 const docUrl = computed(() => sanitizeUrl(appStore.cachedPublicSettings?.doc_url || appStore.docUrl || ''))
 const isAuthenticated = computed(() => authStore.isAuthenticated)
 const isAdmin = computed(() => authStore.isAdmin)
@@ -210,6 +217,7 @@ onUnmounted(() => {
 }
 .pub-logo { width: 32px; height: 32px; border-radius: 8px; object-fit: contain; }
 .pub-name { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+.pub-wordmark { height: 28px; width: auto; display: block; }
 .pub-links { display: flex; align-items: center; gap: 4px; }
 .pub-link {
   padding: 6px 14px;
@@ -300,6 +308,7 @@ onUnmounted(() => {
 }
 .pub-footer-logo { width: 28px; height: 28px; border-radius: 6px; object-fit: contain; }
 .pub-footer-name { font-weight: 700; font-size: 16px; letter-spacing: -0.02em; }
+.pub-footer-wordmark { height: 24px; width: auto; display: block; }
 .pub-footer-tagline { font-size: 14px; line-height: 1.6; color: var(--text-secondary); max-width: 240px; }
 .pub-footer-columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .pub-footer-col-title {

@@ -8,25 +8,38 @@
   >
     <!-- Logo/Brand -->
     <div class="sidebar-header" :class="{ 'sidebar-header-collapsed': sidebarCollapsed }">
-      <!-- Custom Logo or Default Logo -->
-      <router-link
-        :to="homePath"
-        class="sidebar-logo flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl shadow-glow transition-opacity hover:opacity-80"
-        @click="handleMenuItemClick(homePath)"
-      >
-        <img v-if="settingsLoaded" :src="siteLogo || '/logo.svg'" alt="Logo" class="h-full w-full object-contain" />
-      </router-link>
-      <div class="sidebar-brand" :class="{ 'sidebar-brand-collapsed': sidebarCollapsed }" :aria-hidden="sidebarCollapsed ? 'true' : 'false'">
+      <!-- Default brand, expanded: full XOA lockup -->
+      <template v-if="settingsLoaded && !hasCustomLogo && !sidebarCollapsed">
         <router-link
           :to="homePath"
-          class="sidebar-brand-title text-lg font-bold text-gray-900 transition-colors hover:text-primary-600 dark:text-white dark:hover:text-primary-400"
+          class="sidebar-wordmark transition-opacity hover:opacity-80"
           @click="handleMenuItemClick(homePath)"
         >
-          {{ siteName }}
+          <img src="/logo-full.svg" alt="XOAAI" class="sidebar-wordmark-img" />
         </router-link>
-        <!-- Version Badge -->
         <VersionBadge :version="siteVersion" />
-      </div>
+      </template>
+      <!-- Collapsed, or custom white-label logo: square mark (+ site name) -->
+      <template v-else>
+        <router-link
+          :to="homePath"
+          class="sidebar-logo flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl shadow-glow transition-opacity hover:opacity-80"
+          @click="handleMenuItemClick(homePath)"
+        >
+          <img v-if="settingsLoaded" :src="siteLogo || '/logo.svg'" alt="Logo" class="h-full w-full object-contain" />
+        </router-link>
+        <div class="sidebar-brand" :class="{ 'sidebar-brand-collapsed': sidebarCollapsed }" :aria-hidden="sidebarCollapsed ? 'true' : 'false'">
+          <router-link
+            :to="homePath"
+            class="sidebar-brand-title text-lg font-bold text-gray-900 transition-colors hover:text-primary-600 dark:text-white dark:hover:text-primary-400"
+            @click="handleMenuItemClick(homePath)"
+          >
+            {{ siteName }}
+          </router-link>
+          <!-- Version Badge -->
+          <VersionBadge :version="siteVersion" />
+        </div>
+      </template>
     </div>
 
     <!-- Navigation -->
@@ -259,6 +272,7 @@ const expandedGroups = ref<Set<string>>(new Set())
 // Site settings from appStore (cached, no flicker)
 const siteName = computed(() => appStore.siteName)
 const siteLogo = computed(() => sanitizeUrl(appStore.siteLogo || '', { allowRelative: true, allowDataUrl: true }))
+const hasCustomLogo = computed(() => !!siteLogo.value)
 const siteVersion = computed(() => appStore.siteVersion)
 const settingsLoaded = computed(() => appStore.publicSettingsLoaded)
 
@@ -965,6 +979,17 @@ onBeforeUnmount(() => {
 .sidebar-logo {
   flex: 0 0 2.25rem;
   min-width: 2.25rem;
+}
+
+.sidebar-wordmark {
+  display: inline-flex;
+  align-items: center;
+}
+
+.sidebar-wordmark-img {
+  display: block;
+  height: 1.625rem;
+  width: auto;
 }
 
 .sidebar-header-collapsed {
